@@ -33,12 +33,10 @@
       display:flex;align-items:center;justify-content:space-between;
       padding:0.7rem 0;
     }
-  nav img{
-  height:98px;      /* Try 70–90 depending how big you want */
-  border-radius:10px;
-  box-shadow:0 6px 14px rgba(0,0,0,0.6);
-}
-
+    nav img{
+      height:52px;border-radius:10px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.6);
+    }
     nav ul{
       list-style:none;display:flex;gap:1.3rem;
       font-size:0.9rem;
@@ -179,92 +177,23 @@
       .form-grid{grid-template-columns:1fr}
       .form-grid textarea{grid-column:span 1}
     }
-    /* ===== HEADER BRAND AREA ===== */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:1rem;
-}
-
-nav img{
-  height:110px; /* change bigger or smaller if needed */
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  width:100%;
-}
-
-.brand-text{
-  display:flex;
-  flex-direction:column;
-}
-
-.brand-name{
-  font-size:1.6rem;
-  font-weight:800;
-}
-
-.brand-slogan{
-  font-size:1.3rem;
-  font-weight:600;
-  color:#cfd9ff;
-}
-nav{
-  padding:1.2rem 0;
-}
-
-.brand{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;   /* left aligned = professional */
-  gap:0.4rem;
-}
-
-
-.nav-menu{
-  display:flex;
-  gap:1.8rem;
-  list-style:none;
-  margin-top:0.8rem;
-}
-
-.nav-menu a{
-  color:#ffffff;
-  text-decoration:none;
-  font-size:1rem;
-}
-
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="brand">
-    <img src="assets/sqrd2-logo.png.png" alt="SQRD Temporary Works Logo">
-
-    <div class="brand-text">
-      <div class="brand-name">SQRD Temporary Works</div>
-      <div class="brand-slogan">Temporary Works. Engineered Right.</div>
-    </div>
+<header>
+  <div class="container">
+    <nav>
+      <img src="assets/sqrd2-logo.png.png" alt="SQRD Temporary Works Logo" />
+      <ul>
+        <li><a href="#services">Temporary Works</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Enquiry</a></li>
+        <li><a class="nav-cta" href="#contact">Send TW request</a></li>
+      </ul>
+    </nav>
   </div>
-
-  <ul class="nav-menu">
-    <li><a href="#services">Temporary Works</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Enquiry</a></li>
-    <li><a class="nav-cta" href="#contact">Send TW request</a></li>
-  </ul>
-</nav>
-
-  </ul>
-</nav>
-
+</header>
 
 <section class="hero">
   <div class="container hero-inner">
