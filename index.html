@@ -1,438 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>SQRD Design Engineering | Temporary Works & Structural Design</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SQRD Design Engineering provides flexible temporary works and structural engineering support for UK and French contractors from the UAE." />
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:#020617;
-      color:#e5e7eb;
-      line-height:1.5;
-    }
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1120px;margin:0 auto;padding:0 1.2rem}
-    header{background:#020617;border-bottom:1px solid #1f2937;position:sticky;top:0;z-index:20}
-    nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0.6rem 0;
-    }
-    nav .logo{display:flex;align-items:center;gap:0.6rem}
-    nav .logo img{height:52px;width:auto}
-    nav ul{list-style:none;display:flex;gap:1.2rem;font-size:0.9rem}
-    nav a{color:#e5e7eb}
-    nav a:hover{text-decoration:underline}
-    .nav-cta{
-      padding:0.35rem 0.9rem;border-radius:999px;border:1px solid #f97316;
-      color:#f97316;font-size:0.8rem;
-    }
-    .nav-cta:hover{background:#f97316;color:#020617}
-    .lang-switch{font-size:0.78rem}
-    .hero{
-      background:radial-gradient(circle at top,#0b1120 0,#020617 55%,#020617 100%);
-      padding:3rem 0 2.7rem;
-    }
-    .hero-inner{
-      display:grid;
-      grid-template-columns:minmax(0,1.4fr) minmax(0,1.1fr);
-      gap:2.3rem;align-items:center;
-    }
-    .pill{
-      display:inline-flex;align-items:center;gap:0.4rem;
-      padding:0.25rem 0.7rem;border-radius:999px;border:1px solid #4b5563;
-      font-size:0.74rem;text-transform:uppercase;letter-spacing:0.16em;
-      color:#e5e7eb;margin-bottom:0.9rem;
-    }
-    .pill-dot{
-      width:7px;height:7px;border-radius:999px;background:#22c55e;
-      box-shadow:0 0 0 4px rgba(34,197,94,0.25);
-    }
-    .hero h1{
-      font-size:clamp(2.1rem,3vw,2.6rem);
-      margin-bottom:0.75rem;
-    }
-    .hero p{
-      font-size:0.98rem;color:#cbd5f5;
-      max-width:32rem;margin-bottom:1.2rem;
-    }
-    .hero-buttons{
-      display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.5rem;
-    }
-    .btn{
-      border-radius:999px;padding:0.7rem 1.4rem;font-size:0.9rem;
-      border:none;cursor:pointer;font-weight:500;
-      display:inline-flex;align-items:center;gap:0.4rem;
-    }
-    .btn-primary{
-      background:linear-gradient(135deg,#f97316,#facc15);
-      color:#020617;box-shadow:0 14px 30px rgba(250,204,21,0.35);
-    }
-    .btn-primary:hover{filter:brightness(1.05)}
-    .btn-ghost{
-      background:transparent;border:1px solid #4b5563;color:#e5e7eb;
-    }
-    .btn-ghost:hover{background:rgba(15,23,42,0.85)}
-    .hero-meta{
-      display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.4rem;
-      font-size:0.82rem;color:#9ca3af;
-    }
-    .hero-card{
-      background:rgba(15,23,42,0.95);
-      border-radius:1.1rem;border:1px solid rgba(148,163,184,0.45);
-      padding:1.25rem;
-      box-shadow:0 18px 40px rgba(0,0,0,0.7);
-      font-size:0.86rem;color:#cbd5f5;
-    }
-    .hero-card h2{font-size:1rem;margin-bottom:0.5rem}
-    .hero-card ul{margin-left:1.1rem;margin-top:0.35rem}
-    .hero-card li{margin-bottom:0.25rem}
-    .muted{font-size:0.8rem;color:#9ca3af;margin-top:0.35rem}
-
-    section{padding:2.7rem 0}
-    h2.section-title{font-size:1.6rem;margin-bottom:0.5rem}
-    p.section-subtitle{
-      color:#9ca3af;font-size:0.92rem;margin-bottom:1.7rem;max-width:40rem;
-    }
-    .grid-3{
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem;
-    }
-    .card{
-      background:radial-gradient(circle at top left,rgba(148,163,184,0.16),#020617);
-      border-radius:1rem;border:1px solid rgba(148,163,184,0.4);
-      padding:1.25rem;
-      box-shadow:0 16px 40px rgba(0,0,0,0.7);
-      font-size:0.88rem;
-    }
-    .card h3{font-size:1rem;margin-bottom:0.45rem}
-    .card p{color:#cbd5f5;margin-bottom:0.4rem}
-    .pill-sm{
-      display:inline-flex;align-items:center;gap:0.35rem;font-size:0.7rem;
-      padding:0.12rem 0.6rem;border-radius:999px;border:1px solid #4b5563;
-      margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.12em;
-      color:#e5e7eb;
-    }
-    .pill-dot-sm{width:6px;height:6px;border-radius:999px;background:#f97316}
-    .list{margin-left:1.1rem;margin-top:0.45rem;font-size:0.84rem;color:#cbd5f5}
-    .list li{margin-bottom:0.25rem}
-
-    .two-col{
-      display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
-      gap:2rem;align-items:flex-start;
-    }
-    .badge-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
-    .badge{
-      font-size:0.72rem;padding:0.18rem 0.7rem;border-radius:999px;
-      border:1px solid #4b5563;background:#020617;
-    }
-
-    .process-steps{list-style:none;font-size:0.86rem}
-    .process-steps li{display:flex;gap:0.6rem;margin-bottom:0.9rem}
-    .step-index{
-      width:1.4rem;height:1.4rem;border-radius:999px;border:1px solid #4b5563;
-      display:inline-flex;align-items:center;justify-content:center;
-      font-size:0.7rem;margin-top:0.12rem;
-    }
-
-    .contact-grid{
-      display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
-      gap:1.6rem;
-    }
-    form{display:grid;gap:0.8rem;font-size:0.86rem}
-    label{font-size:0.8rem;font-weight:500}
-    input,textarea,select{
-      padding:0.55rem 0.7rem;border-radius:0.6rem;border:1px solid #4b5563;
-      background:#020617;color:#e5e7eb;font-family:inherit;font-size:0.9rem;
-    }
-    textarea{min-height:120px;resize:vertical}
-    input::placeholder,textarea::placeholder{color:#6b7280}
-
-    footer{
-      border-top:1px solid #1f2937;padding:1.4rem 0;
-      font-size:0.8rem;text-align:center;color:#9ca3af;
-    }
-
-    .placeholder-box{
-      border-radius:0.9rem;border:1px dashed #4b5563;
-      padding:0.9rem 1rem;font-size:0.84rem;color:#9ca3af;
-      background:#020617;
-    }
-
-    @media(max-width:960px){
-      nav ul{display:none}
-      .hero-inner{grid-template-columns:1fr}
-      .hero-inner>div:last-child{order:-1;margin-bottom:1.3rem}
-      .grid-3{grid-template-columns:1fr}
-      .two-col,.contact-grid{grid-template-columns:1fr}
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>SQRD Design Engineering | Temporary Works & Structural Design</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="SQRD Design Engineering provides temporary works and structural design services with delivery, scope and fee agreed per TW category, complexity and required programme." />
+<style>
+/* ---- SAME DESIGN SYSTEM AS BEFORE, BUT NO PRICING ---- */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#020617;--text:#e5e7eb;--muted:#9ca3af;
+  --accent:#f97316;--accent-soft:#fed7aa;
+}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#020617;color:#e5e7eb;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.container{max-width:1120px;margin:0 auto;padding:0 1.25rem}
+header{background:rgba(2,6,23,.96);border-bottom:1px solid #111827;position:sticky;top:0;z-index:10}
+nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
+nav img{height:50px;border-radius:10px}
+nav ul{list-style:none;display:flex;gap:1.3rem;font-size:.88rem}
+.nav-cta{border:1px solid var(--accent);padding:.4rem 1rem;border-radius:999px;color:var(--accent)}
+.nav-cta:hover{background:var(--accent);color:#020617}
+.lang-switch{font-size:.8rem}
+.hero{background:radial-gradient(circle at top,#0b1120 0,#020617 65%,#020617 100%);padding:3rem 0 2.8rem}
+.hero-inner{display:grid;grid-template-columns:1.5fr 1.1fr;gap:2rem;align-items:center}
+.pill{display:inline-flex;gap:.4rem;padding:.28rem .7rem;border-radius:999px;border:1px solid #4b5563;font-size:.72rem;text-transform:uppercase}
+.pill-dot{width:7px;height:7px;background:#22c55e;border-radius:50%}
+.hero h1{font-size:2.4rem;margin:.7rem 0}
+.hero p{max-width:35rem;color:#cbd5f5}
+.hero-buttons{display:flex;gap:.8rem;margin-top:1rem}
+.btn{border-radius:999px;padding:.75rem 1.5rem;border:none;font-weight:500}
+.btn-primary{background:linear-gradient(135deg,#f97316,#facc15);color:#020617}
+.btn-ghost{border:1px solid #4b5563;background:transparent;color:#e5e7eb}
+.section-title{font-size:1.6rem;margin-bottom:.4rem}
+.section-subtitle{font-size:.92rem;color:#9ca3af;margin-bottom:1.2rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.card{border:1px solid rgba(148,163,184,.45);border-radius:1rem;background:rgba(15,23,42,.9);padding:1.2rem;box-shadow:0 14px 35px rgba(0,0,0,.7)}
+.list{margin-left:1rem;font-size:.86rem;color:#cbd5f5}
+.two-col{display:grid;grid-template-columns:1.2fr 1fr;gap:1.8rem}
+.process-steps{list-style:none}
+.process-steps li{display:flex;gap:.6rem;margin-bottom:.9rem}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1.4rem}
+input,textarea,select{background:#020617;border:1px solid #4b5563;border-radius:.6rem;padding:.55rem .7rem;color:#e5e7eb}
+footer{text-align:center;color:#9ca3af;border-top:1px solid #111827;padding:1.3rem 0}
+@media(max-width:960px){
+nav ul{display:none}
+.hero-inner,.grid-3,.two-col,.contact-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <div class="container">
-    <nav>
-      <div class="logo">
-        <img src="assets/sqrd2-logo.png" alt="SQRD Design Engineering Logo" />
-      </div>
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#why">Why SQRD</a></li>
-        <li><a href="#process">Process</a></li>
-        <li class="lang-switch"><a href="index_fr.html">FR</a> / EN</li>
-        <li><a class="nav-cta" href="#contact">Request Quote</a></li>
-      </ul>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+  <img src="assets/sqrd2-logo.png">
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#process">Process</a></li>
+    <li class="lang-switch"><a href="index_fr.html">FR</a> / EN</li>
+    <li><a class="nav-cta" href="#contact">Request a quote</a></li>
+  </ul>
+</nav>
+</div>
 </header>
 
 <section class="hero">
-  <div class="container hero-inner">
-    <div>
-      <div class="pill"><span class="pill-dot"></span> Flexible temporary works & structural support</div>
-      <h1>Specialist temporary works and structural design support, aligned with your programme.</h1>
-      <p>
-        SQRD Design Engineering provides design and checking support from the UAE for UK and French contractors.
-        Turnaround times are agreed per request, depending on temporary works category and complexity.
-      </p>
-      <div class="hero-buttons">
-        <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          Send a temporary works request
-        </button>
-        <button class="btn btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-          View services
-        </button>
-      </div>
-      <div class="hero-meta">
-        <div>10+ years in temporary works & structural engineering.</div>
-        <div>BS 5975 • Eurocodes • Vendor guidance • Contractor-focused.</div>
-      </div>
-    </div>
-    <div>
-      <div class="hero-card">
-        <h2>Delivery timeframes</h2>
-        <p>
-          Response and delivery times are agreed for each instruction. Straightforward checks may be turned around very
-          quickly, while more complex TW categories, heavy lifting or staged analysis require longer programmes.
-        </p>
-        <ul>
-          <li>Scope and assumed loads clarified at the start.</li>
-          <li>Target delivery date agreed before any work begins.</li>
-          <li>Updates provided if the scope or design brief changes.</li>
-        </ul>
-        <p class="muted">
-          This avoids fixed “guarantees” and keeps delivery aligned with your procedure, TW category and review needs.
-        </p>
-      </div>
-    </div>
-  </div>
+<div class="container hero-inner">
+<div>
+<div class="pill"><span class="pill-dot"></span> Temporary works & structural engineering</div>
+<h1>Temporary works and structural design that adapts to your requirement, TW category and programme.</h1>
+<p>
+Fees and delivery time are always confirmed individually, based on the type of temporary works, complexity and urgency.
+Nothing "fixed template" — you receive a tailored proposal for each project.
+</p>
+
+<div class="hero-buttons">
+<button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+Request a TW quote
+</button>
+<button class="btn btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+View services
+</button>
+</div>
+
+<p style="margin-top:1rem;font-size:.9rem;color:#9ca3af">
+BS 5975 • Eurocodes • Vendor guidance • Practical, buildable engineering
+</p>
+</div>
+
+<div>
+<div class="card">
+<strong>How delivery works</strong>
+<p style="margin-top:.4rem">
+Each request is reviewed and scoped with you. Delivery depends on:
+</p>
+<ul class="list">
+<li>Temporary Works category (BS 5975)</li>
+<li>Complexity of the structure</li>
+<li>Quality of information provided</li>
+<li>Required programme / urgency</li>
+</ul>
+<p style="color:#9ca3af;margin-top:.6rem">
+A written confirmation email is always issued, including scope, assumptions, fee and indicative delivery before work starts.
+</p>
+</div>
+</div>
+</div>
 </section>
 
 <section id="services">
-  <div class="container">
-    <h2 class="section-title">Services</h2>
-    <p class="section-subtitle">
-      Practical, buildable solutions for main contractors, temporary works coordinators, and specialist subcontractors.
-    </p>
-    <div class="grid-3">
-      <div class="card">
-        <span class="pill-sm"><span class="pill-dot-sm"></span> Temporary works</span>
-        <h3>Temporary Works Design & Checks</h3>
-        <p>Design and verification of temporary structures supporting safe construction.</p>
-        <ul class="list">
-          <li>Formwork & falsework systems</li>
-          <li>Backpropping and shoring</li>
-          <li>Retaining / kingpost solutions</li>
-          <li>Access & maintenance platforms</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="pill-sm"><span class="pill-dot-sm"></span> Scaffold & access</span>
-        <h3>Scaffold, Hoist & Edge Protection</h3>
-        <p>Engineering of scaffold and access solutions against standards and supplier data.</p>
-        <ul class="list">
-          <li>Scaffold platforms & birdcages</li>
-          <li>Hoist landing platforms & ties</li>
-          <li>Edge protection to steel & concrete</li>
-          <li>MEWP access platforms and checks</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="pill-sm"><span class="pill-dot-sm"></span> Lifting & heavy loads</span>
-        <h3>Lifting Frames, Mats & Slab Checks</h3>
-        <p>Assessment of lifting systems and supporting structures.</p>
-        <ul class="list">
-          <li>Lifting beams & A-frames</li>
-          <li>Precast lifting & handling checks</li>
-          <li>Crane mats & working platforms</li>
-          <li>Steel deck & RC slab verification</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="container">
+<h2 class="section-title">Services</h2>
+<p class="section-subtitle">Support for main contractors, TWCs, design managers and specialist subcontractors.</p>
 
-<section id="why">
-  <div class="container">
-    <div class="two-col">
-      <div>
-        <h2 class="section-title">Why SQRD Design Engineering?</h2>
-        <p class="section-subtitle">
-          Based in the UAE, SQRD provides flexible support around your working hours. The focus is on clarity,
-          buildability and alignment with your TW procedures rather than fixed “one speed fits all” promises.
-        </p>
-        <ul class="list">
-          <li><strong>Flexible turnaround</strong> – agreed case by case, based on TW category and scope.</li>
-          <li><strong>Senior engineer input</strong> – over a decade in temporary works & structural design.</li>
-          <li><strong>Standards-driven</strong> – BS 5975, relevant Eurocodes, TG20 & vendor guidance.</li>
-          <li><strong>Contractor-focused</strong> – buildable solutions aligned with real site conditions.</li>
-          <li><strong>Scoped clearly</strong> – assumptions and limitations clearly stated in each pack.</li>
-        </ul>
-        <div class="badge-row">
-          <span class="badge">Temporary works</span>
-          <span class="badge">Structural design</span>
-          <span class="badge">UK & France</span>
-          <span class="badge">Flexible delivery</span>
-        </div>
-      </div>
-      <div>
-        <div class="card">
-          <h3>How this package is meant to be used</h3>
-          <div class="placeholder-box">
-            <ul class="list">
-              <li>Replace the email address with your real business email.</li>
-              <li>Use the generated logo or replace <code>assets/sqrd2-logo.png</code> with your own.</li>
-              <li>Optional: add a video later at <code>assets/temp-works-loop.mp4</code>.</li>
-              <li>Host easily on Netlify, GitHub Pages or any static hosting service.</li>
-            </ul>
-          </div>
-          <p class="muted">
-            No pricing is shown on this version of the site. All fees are agreed individually following your TW request.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="grid-3">
+<div class="card">
+<strong>Temporary Works Design & Checks</strong>
+<ul class="list">
+<li>Formwork & falsework</li>
+<li>Backpropping & shoring</li>
+<li>Retaining / kingpost</li>
+<li>Access platforms</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Scaffold, Hoist & Access</strong>
+<ul class="list">
+<li>Scaffold platforms (TG20 / supplier)</li>
+<li>Hoist landing platforms</li>
+<li>Edge protection</li>
+<li>MEWP checks</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Lifting & Slab Verification</strong>
+<ul class="list">
+<li>Lifting beams & frames</li>
+<li>Precast lifting checks</li>
+<li>Crane mats & working platforms</li>
+<li>Steel deck & RC slab verification</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 
 <section id="process">
-  <div class="container">
-    <h2 class="section-title">How the process works</h2>
-    <p class="section-subtitle">
-      A simple, transparent workflow that can fit into your existing temporary works procedure.
-    </p>
-    <div class="two-col">
-      <div>
-        <ul class="process-steps">
-          <li>
-            <span class="step-index">1</span>
-            <div>
-              <strong>Send your temporary works brief.</strong>
-              <div class="muted">Drawings, sketches, loads, applicable standards and supplier systems.</div>
-            </div>
-          </li>
-          <li>
-            <span class="step-index">2</span>
-            <div>
-              <strong>Scope, delivery and fee agreed.</strong>
-              <div class="muted">You receive a short confirmation email with deliverables, assumptions, target delivery and fee.</div>
-            </div>
-          </li>
-          <li>
-            <span class="step-index">3</span>
-            <div>
-              <strong>Design and checks carried out.</strong>
-              <div class="muted">Calculations and sketches are prepared in line with the agreed scope and standards.</div>
-            </div>
-          </li>
-          <li>
-            <span class="step-index">4</span>
-            <div>
-              <strong>Issue for your internal TW review.</strong>
-              <div class="muted">Packs are issued for your internal category check and sign-off route.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <div class="card">
-          <h3>Software & references</h3>
-          <ul class="list">
-            <li>Autodesk Robot Structural Analysis, hand checks and spreadsheets</li>
-            <li>BS 5975 temporary works procedures and permissible stress</li>
-            <li>Relevant Eurocodes &amp; National Annexes</li>
-            <li>Vendor data (scaffold, formwork, anchors and systems)</li>
-          </ul>
-          <p class="muted">
-            Final sign-off, category checks and issue stages remain under your internal TW control.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container two-col">
+<div>
+<h2 class="section-title">Process</h2>
+<ul class="process-steps">
+<li><strong>1. Send TW brief</strong></li>
+<li><strong>2. Proposal issued</strong></li>
+<li><strong>3. Design & checks completed</strong></li>
+<li><strong>4. Issued for your TW procedure</strong></li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Standards & Tools</strong>
+<ul class="list">
+<li>BS 5975</li>
+<li>Relevant Eurocodes</li>
+<li>Supplier data</li>
+<li>Autodesk Robot + hand calcs</li>
+</ul>
+</div>
+</div>
 </section>
 
 <section id="contact">
-  <div class="container">
-    <h2 class="section-title">Request a TW review or design</h2>
-    <p class="section-subtitle">
-      Share a brief description of your project requirements. You’ll receive a clear response with scope,
-      indicative delivery and fee before any work starts.
-    </p>
-    <div class="contact-grid">
-      <div>
-        <form>
-          <label for="name">Name</label>
-          <input id="name" type="text" placeholder="Your name" />
+<div class="container">
+<h2 class="section-title">Request a temporary works quote</h2>
+<p class="section-subtitle">Share a short description. You will receive a clear written proposal with fee and indicative delivery.</p>
 
-          <label for="company">Company</label>
-          <input id="company" type="text" placeholder="Company name" />
+<div class="contact-grid">
+<div>
+<form>
+<input placeholder="Your name">
+<input placeholder="Company">
+<input placeholder="Email">
+<textarea placeholder="Describe TW requirement, loads, category (if known), and urgency"></textarea>
+<button type="button" class="btn btn-primary">Send (static demo)</button>
+<p style="color:#9ca3af;font-size:.8rem">
+Form is static on GitHub Pages.
+</p>
+</form>
+</div>
 
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="your.email@company.com" />
-
-          <label for="service">Type of request</label>
-          <select id="service">
-            <option>Temporary works design</option>
-            <option>Design check / verification</option>
-            <option>Scaffold / hoist platform</option>
-            <option>Working platform / crane mat</option>
-            <option>Lifting frame / A-frame</option>
-            <option>RC / steel verification</option>
-            <option>Other / multiple</option>
-          </select>
-
-          <label for="message">Project brief</label>
-          <textarea id="message" placeholder="Short description of the project, loads, standards and required deliverables."></textarea>
-
-          <button type="button" class="btn btn-primary">Send (static demo)</button>
-          <p class="muted">
-            This form is static in this package. To make it send real emails you can later connect
-            a service like Netlify Forms, Formspree or a simple backend.
-          </p>
-        </form>
-      </div>
-      <div>
-        <div class="card">
-          <h3>Direct contact</h3>
-          <p>
-            <strong>Email:</strong> info@sqrd2buildingdesignsolution.co.uk<br />
-            <strong>Location:</strong> United Arab Emirates – supporting UK &amp; France
-          </p>
-          <p class="muted" style="margin-top:0.7rem;">
-            Delivery time, fee and scope are agreed individually based on your temporary works request.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div>
+<div class="card">
+<strong>Direct Contact</strong>
+<p>Email: info@sqrd2buildingdesignsolution.co.uk</p>
+<p>UAE based – supporting UK and France</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <footer>
-  © SQRD Design Engineering. All rights reserved.
+© SQRD Design Engineering. All rights reserved.
 </footer>
 
 </body>
