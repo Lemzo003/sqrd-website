@@ -34,7 +34,7 @@
       padding:0.7rem 0;
     }
   nav img{
-  height:98px;      /* Try 70–90 depending how big you want */
+  height:110px;      /* Try 70–90 depending how big you want */
   border-radius:10px;
   box-shadow:0 6px 14px rgba(0,0,0,0.6);
 }
@@ -179,6 +179,43 @@
       .form-grid{grid-template-columns:1fr}
       .form-grid textarea{grid-column:span 1}
     }
+    /* ===== HEADER BRAND AREA ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+}
+
+nav img{
+  height:110px; /* change bigger or smaller if needed */
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  width:100%;
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+}
+
+.brand-name{
+  font-size:1.6rem;
+  font-weight:800;
+}
+
+.brand-slogan{
+  font-size:1.3rem;
+  font-weight:600;
+  color:#cfd9ff;
+}
+
   </style>
 </head>
 <body>
