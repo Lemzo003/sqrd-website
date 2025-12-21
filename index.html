@@ -1,98 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>SQRD Temporary Works Engineering | Design & Checks</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>SQRD Temporary Works Engineering | Design & Checks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#020617;--text:#e5e7eb;--muted:#9ca3af;
-  --accent:#f97316;
-}
-body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#000;color:var(--text);line-height:1.5}
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#020617;
+      --bg-soft:#030712;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#f97316;
+    }
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#020617 0%,#000 70%);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:0 1.3rem}
 
-/* Layout */
-.container{max-width:1120px;margin:auto;padding:0 1.3rem}
-section{padding:2.8rem 0}
-.section-title{font-size:1.6rem;margin-bottom:.4rem}
-.section-subtitle{font-size:.92rem;color:var(--muted);margin-bottom:1rem}
+    header{
+      background:rgba(2,6,23,0.96);
+      border-bottom:1px solid #111827;
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(12px);
+    }
+    nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.7rem 0;
+    }
+    nav img{
+      height:52px;border-radius:10px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.6);
+    }
+    nav ul{
+      list-style:none;display:flex;gap:1.3rem;
+      font-size:0.9rem;
+    }
+    .nav-cta{
+      padding:0.4rem 1rem;border-radius:999px;
+      border:1px solid var(--accent);color:var(--accent);
+      font-weight:500;
+    }
+    .nav-cta:hover{background:var(--accent);color:#020617}
 
-/* Header */
-header{background:#020617;border-bottom:1px solid #111827;position:sticky;top:0;z-index:10}
-nav{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0}
-nav img{height:50px;border-radius:8px}
-nav ul{display:flex;list-style:none;gap:1.3rem;font-size:.9rem}
-.nav-cta{padding:.4rem 1rem;border:1px solid var(--accent);border-radius:999px;color:var(--accent)}
-.nav-cta:hover{background:var(--accent);color:#111}
+    .hero{
+      padding:3.1rem 0 2.8rem;
+      background:radial-gradient(circle at top,#0b1120 0,#020617 60%,#000 100%);
+    }
+    .hero-inner{
+      display:grid;grid-template-columns:1.5fr 1fr;
+      gap:2.2rem;align-items:center;
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      padding:0.3rem 0.8rem;border-radius:999px;
+      border:1px solid #4b5563;font-size:0.74rem;
+      text-transform:uppercase;letter-spacing:0.16em;
+      background:rgba(15,23,42,0.9);
+    }
+    .pill-dot{
+      width:7px;height:7px;border-radius:999px;background:#22c55e;
+    }
+    .hero h1{
+      font-size:2.35rem;margin:0.9rem 0 0.6rem;
+    }
+    .hero p{
+      max-width:36rem;color:#cbd5f5;font-size:0.98rem;
+    }
+    .hero-highlight{
+      margin-top:0.5rem;
+      padding:0.45rem 0.8rem;border-radius:0.9rem;
+      background:linear-gradient(90deg,rgba(249,115,22,0.18),rgba(56,189,248,0.12));
+      border:1px solid rgba(148,163,184,0.4);
+      font-size:0.86rem;
+    }
+    .hero-meta{
+      margin-top:1.1rem;font-size:0.86rem;color:var(--muted);
+    }
 
-/* Hero */
-.hero{padding:3rem 0 2.5rem;background:radial-gradient(circle at top,#020617 0,#000 80%)}
-.hero-inner{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem}
-.hero h1{font-size:2.3rem;margin-bottom:.5rem}
-.hero p{color:#cbd5f5}
-.pill{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #4b5563;padding:.3rem .75rem;border-radius:999px;font-size:.7rem;text-transform:uppercase}
-.pill-dot{width:7px;height:7px;border-radius:50%;background:#22c55e}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:0.75rem 1.6rem;border-radius:999px;
+      border:none;font-weight:500;font-size:0.9rem;
+      cursor:pointer;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,#f97316,#facc15);
+      color:#020617;box-shadow:0 16px 40px rgba(250,204,21,0.35);
+    }
+    .btn-ghost{
+      background:rgba(15,23,42,0.95);
+      border:1px solid #4b5563;color:var(--text);
+    }
+    .hero-buttons{
+      display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1rem;
+    }
 
-/* Cards */
-.card{background:#0b1220;border:1px solid #3d4a63;padding:1.2rem;border-radius:1rem;box-shadow:0 16px 40px rgba(0,0,0,.7)}
-.list{margin-left:1rem;color:#d1d5db}
+    .card{
+      border-radius:1rem;
+      background:radial-gradient(circle at top left,rgba(148,163,184,0.22),var(--bg-soft));
+      border:1px solid rgba(148,163,184,0.45);
+      padding:1.25rem 1.3rem;
+      box-shadow:0 16px 40px rgba(0,0,0,0.8);
+      font-size:0.9rem;
+    }
+    .list{margin-left:1.1rem;font-size:0.88rem;color:#d1d5db}
+    .list li{margin-bottom:0.28rem}
 
-/* FORM SECTION */
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1rem;
-  margin-top:.7rem;
-}
-.form-grid textarea{
-  grid-column:span 2;
-}
+    section{padding:2.8rem 0}
+    .section-title{font-size:1.6rem;margin-bottom:0.4rem}
+    .section-subtitle{
+      font-size:0.92rem;color:var(--muted);
+      margin-bottom:1.1rem;max-width:42rem;
+    }
 
-input,textarea{
-  width:100%;
-  padding:.6rem .7rem;
-  border:1px solid #4b5563;
-  border-radius:.6rem;
-  background:#020617;
-  color:#fff;
-  font-size:.9rem;
-}
-textarea{min-height:110px}
-input::placeholder,textarea::placeholder{color:#6b7280}
+    .services-card{margin-top:0.3rem}
 
-.btn{
-  display:inline-block;
-  padding:.9rem 1.6rem;
-  border-radius:999px;
-  border:none;
-  background:linear-gradient(135deg,#f97316,#facc15);
-  color:#111;
-  font-weight:600;
-  text-decoration:none;
-  margin-top:.8rem;
-}
-footer{text-align:center;color:#9ca3af;padding:1.3rem 0;border-top:1px solid #111827}
-@media(max-width:960px){
-  nav ul{display:none}
-  .hero-inner{grid-template-columns:1fr}
-  .form-grid{grid-template-columns:1fr}
-  textarea{grid-column:span 1}
-}
-</style>
+    .two-col{
+      display:grid;grid-template-columns:1.1fr 1.1fr;
+      gap:1.8rem;align-items:flex-start;
+    }
+
+    .form-card{
+      border-radius:1rem;
+      background:rgba(15,23,42,0.98);
+      border:1px solid rgba(148,163,184,0.4);
+      padding:1.3rem 1.3rem 1.4rem;
+      box-shadow:0 14px 36px rgba(0,0,0,0.8);
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0.9rem;
+      margin-top:0.6rem;
+    }
+    .form-grid textarea{
+      grid-column:span 2;
+    }
+    label{
+      font-size:0.78rem;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      color:var(--muted);
+      margin-bottom:0.2rem;
+      display:block;
+    }
+    input,textarea{
+      width:100%;
+      padding:0.6rem 0.7rem;
+      border-radius:0.6rem;
+      border:1px solid #4b5563;
+      background:#020617;
+      color:var(--text);
+      font-size:0.9rem;
+    }
+    textarea{min-height:110px;resize:vertical}
+    input::placeholder,textarea::placeholder{color:#6b7280}
+    .form-footer{
+      margin-top:0.9rem;font-size:0.8rem;color:var(--muted);
+    }
+
+    footer{
+      text-align:center;color:var(--muted);
+      padding:1.35rem 0;border-top:1px solid #111827;
+      font-size:0.8rem;
+    }
+
+    @media(max-width:960px){
+      nav ul{display:none}
+      .hero-inner,.two-col{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .form-grid textarea{grid-column:span 1}
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
   <div class="container">
     <nav>
-      <img src="assets/sqrd2-logo.png">
+      <img src="assets/sqrd2-logo.png" alt="SQRD Temporary Works Logo" />
       <ul>
         <li><a href="#services">Temporary Works</a></li>
+        <li><a href="#process">Process</a></li>
         <li><a href="#contact">Enquiry</a></li>
-        <li><a class="nav-cta" href="#contact">Send TW Request</a></li>
+        <li><a class="nav-cta" href="#contact">Send TW request</a></li>
       </ul>
     </nav>
   </div>
@@ -101,82 +198,190 @@ footer{text-align:center;color:#9ca3af;padding:1.3rem 0;border-top:1px solid #11
 <section class="hero">
   <div class="container hero-inner">
     <div>
-      <div class="pill"><span class="pill-dot"></span> Temporary Works Engineering</div>
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Temporary Works Engineering
+      </div>
       <h1>Temporary Works design & checks for live construction projects.</h1>
+      <p class="hero-highlight">
+        Dedicated to Temporary Works only. Designs and checks in line with BS 5975, relevant Eurocodes and supplier
+        guidance, with buildability and site constraints at the centre.
+      </p>
       <p>
-        Dedicated to Temporary Works only — supporting contractors, TWCs and site teams with buildable,
-        BS 5975 aligned engineering.
+        SQRD supports contractors, TWCs and site teams with clear, buildable solutions for formwork, platforms,
+        propping, retaining systems, lifting frames and more.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Start a Temporary Works enquiry
+        </button>
+        <button class="btn btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+          View TW services
+        </button>
+      </div>
+      <p class="hero-meta">
+        BS 5975 • Eurocodes • Supplier systems • Contractor-focused engineering
       </p>
     </div>
 
-    <div class="card">
-      <strong>Delivery depends on:</strong>
-      <ul class="list">
-        <li>TW Category</li>
-        <li>Complexity & risk</li>
-        <li>Information provided</li>
-        <li>Required timescale</li>
-      </ul>
-      <p style="color:#9ca3af;font-size:.85rem;margin-top:.5rem">
-        You always receive a written proposal before work starts.
-      </p>
+    <div>
+      <div class="card">
+        <strong>Delivery & approach</strong>
+        <p style="margin-top:0.4rem">
+          Each enquiry is scoped individually. Programme and fee depend on:
+        </p>
+        <ul class="list">
+          <li>Temporary Works category (BS 5975)</li>
+          <li>Complexity and risk level</li>
+          <li>Information provided at the start</li>
+          <li>Required timescale / urgency</li>
+        </ul>
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.55rem">
+          A short written proposal is issued before work starts, confirming scope, assumptions, fee and indicative
+          delivery. If the brief changes, the proposal is updated by agreement.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="services">
   <div class="container">
-    <h2 class="section-title">Temporary Works Services</h2>
-    <div class="card">
+    <h2 class="section-title">Temporary Works services</h2>
+    <p class="section-subtitle">
+      A clear set of services you can reference directly in your email brief
+      (for example: “TW Request – Working platform – item 5”).
+    </p>
+
+    <div class="card services-card">
       <ul class="list">
-        <li>Formwork / Falsework</li>
-        <li>Backpropping & Re-shoring</li>
-        <li>Retaining / Kingpost / Excavation Support</li>
-        <li>Working Platforms & MEWP Access</li>
-        <li>Scaffold & Hoist Platforms</li>
-        <li>Edge Protection</li>
-        <li>Lifting Beams, Frames & A-Frames</li>
-        <li>Precast Lifting Checks</li>
-        <li>Crane Mats / Ground Pressure</li>
-        <li>RC & Steel Local Checks</li>
+        <li>Formwork and falsework design for slabs, walls, beams and rafts</li>
+        <li>Backpropping and re-shoring layouts and checks</li>
+        <li>Temporary propping of RC walls, cores and frames</li>
+        <li>Retaining systems, kingpost walls and excavation support checks</li>
+        <li>Working platforms and access platforms (including MEWP access)</li>
+        <li>Scaffold platforms and birdcages (TG20 / supplier-based)</li>
+        <li>Hoist landing platforms and tie arrangements</li>
+        <li>Edge protection to steel and concrete structures</li>
+        <li>Lifting beams, spreader frames and A-frames</li>
+        <li>Precast lifting and handling verification</li>
+        <li>Crane mats and working platform assessments</li>
+        <li>Local RC slab or foundation checks for concentrated loads</li>
+        <li>Steel member checks and local strengthening details</li>
       </ul>
+      <p style="color:var(--muted);font-size:0.82rem;margin-top:0.6rem">
+        You remain in control of TW categories, internal checks and permits. SQRD supports the design, checking and
+        documentation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-subtitle">
+      A simple process aligned with BS 5975 Temporary Works procedures.
+    </p>
+
+    <div class="two-col">
+      <div class="card">
+        <ul class="list">
+          <li><strong>1. Send TW brief</strong> – drawings, loads, standards, TW category (if known) and programme.</li>
+          <li><strong>2. Written proposal</strong> – scope, assumptions, fee and indicative delivery are emailed to you.</li>
+          <li><strong>3. Design / check completed</strong> – calculations, sketches and notes are prepared.</li>
+          <li><strong>4. Issue for your TW procedure</strong> – for TWC / Cat 2 / Cat 3 review and site implementation.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>Standards & tools</strong>
+        <ul class="list" style="margin-top:0.4rem">
+          <li>BS 5975 Temporary Works procedures</li>
+          <li>Relevant Eurocodes and National Annexes</li>
+          <li>Supplier technical data (scaffold, formwork, anchors, systems)</li>
+          <li>Autodesk Robot Structural Analysis + hand calculations & spreadsheets</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="container">
-    <h2 class="section-title">Temporary Works Enquiry</h2>
+    <h2 class="section-title">Temporary Works enquiry</h2>
     <p class="section-subtitle">
-      Fill the fields below (for guidance) then click **Send Enquiry** and attach drawings / files in email.
+      Fill in the fields below and submit. Netlify Forms will email the enquiry to SQRD once configured.
     </p>
 
-    <div class="card">
+    <div class="form-card">
+      <!-- Netlify Forms: the form name + data-netlify enable notifications -->
+      <form name="tw-enquiry" method="POST" data-netlify="true">
+        <!-- Netlify needs this hidden field to identify the form -->
+        <input type="hidden" name="form-name" value="tw-enquiry" />
 
-      <div class="form-grid">
-        <input placeholder="Project name">
-        <input placeholder="Project location">
-        <input placeholder="Company">
-        <input placeholder="Your name">
-        <input placeholder="Email">
-        <input placeholder="Required timescale / deadline">
+        <div class="form-grid">
+          <div>
+            <label for="project-name">Project name</label>
+            <input id="project-name" name="Project name" type="text" placeholder="e.g. Data centre – Block A" required />
+          </div>
+          <div>
+            <label for="project-location">Project location</label>
+            <input id="project-location" name="Project location" type="text" placeholder="City / site" />
+          </div>
 
-        <textarea placeholder="Temporary Works item(s) / scope description"></textarea>
+          <div>
+            <label for="company">Company</label>
+            <input id="company" name="Company" type="text" placeholder="Your company" />
+          </div>
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="Name" type="text" placeholder="Contact person" required />
+          </div>
 
-        <textarea placeholder="Loads / ground conditions / constraints (if known)"></textarea>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="Email" type="email" placeholder="your.email@company.com" required />
+          </div>
+          <div>
+            <label for="timescale">Required timescale / deadline</label>
+            <input id="timescale" name="Required timescale" type="text" placeholder="e.g. issue by dd/mm/yyyy" />
+          </div>
 
-        <textarea placeholder="Paste file links here (OneDrive / WeTransfer / SharePoint / Dropbox)"></textarea>
-      </div>
+          <div>
+            <label for="supplier">Preferred TW system / supplier (if any)</label>
+            <input id="supplier" name="Preferred supplier" type="text" placeholder="Peri / RMD / Doka / N/A" />
+          </div>
+          <div>
+            <label for="tw-item">TW item(s)</label>
+            <input id="tw-item" name="TW item(s)" type="text" placeholder="Refer to service list items if helpful" />
+          </div>
 
-      <a class="btn"
-   href="mailto:info@sqrd2buildingdesignsolution.co.uk?subject=Temporary%20Works%20Enquiry&body=Please%20copy%20the%20details%20from%20the%20web%20form%20(checklist)%20into%20this%20email%20and%20attach%20drawings%20and%20file%20links.">
-  Send TW Enquiry
-</a>
+          <div>
+            <label for="scope">Scope / description</label>
+            <textarea id="scope" name="Scope description" placeholder="Short description of the Temporary Works requirement." required></textarea>
+          </div>
 
+          <div>
+            <label for="loads">Loads / ground / constraints</label>
+            <textarea id="loads" name="Loads & ground" placeholder="Key loads, ground conditions and constraints (if known)."></textarea>
+          </div>
 
-      <p style="color:#9ca3af;font-size:.8rem;margin-top:.6rem">
-        Note: This page is static (GitHub Pages). The button opens your email ready to send. Attach files before submitting.
-      </p>
+          <div>
+            <label for="file-links">File links (drawings, models, etc.)</label>
+            <textarea id="file-links" name="File links" placeholder="Paste OneDrive / SharePoint / Dropbox / WeTransfer links here."></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" style="margin-top:1rem;">
+          Send Temporary Works enquiry
+        </button>
+
+        <p class="form-footer">
+          This form is processed by Netlify Forms. Each submission will appear in your Netlify dashboard and can send an
+          email notification to your chosen address (e.g. info@sqrd2buildingdesignsolution.co.uk).
+        </p>
+      </form>
     </div>
   </div>
 </section>
@@ -187,3 +392,4 @@ footer{text-align:center;color:#9ca3af;padding:1.3rem 0;border-top:1px solid #11
 
 </body>
 </html>
+
