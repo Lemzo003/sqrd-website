@@ -65,12 +65,12 @@
       letter-spacing:.03em;
     }
     .brand-slogan{
-      font-size:.83rem;
+      font-size:.78rem;
       color:#9ca3af;
     }
 
     .hero{
-      padding:3.1rem 0 2.8rem;
+      padding:2.2rem 0 2.8rem;
       background:radial-gradient(circle at top,#0b1120 0,#020617 60%,#000 100%);
     }
     .hero-inner{
@@ -184,9 +184,33 @@
       font-size:0.8rem;
     }
 
+    /* Fade-in animation */
+    .fade-in{
+      opacity:0;
+      transform:translateY(12px);
+      animation:fadeInUp .75s ease-out forwards;
+    }
+    .delay-1{animation-delay:.15s;}
+    .delay-2{animation-delay:.3s;}
+    .delay-3{animation-delay:.45s;}
+
+    @keyframes fadeInUp{
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    /* Mobile tweaks */
     @media(max-width:960px){
       nav ul{display:none}
       .hero-inner,.two-col{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .hero h1{
+        font-size:1.8rem;
+        line-height:1.18;
+      }
+      .btn-primary{
+        box-shadow:0 10px 25px rgba(250,204,21,0.28);
+      }
     }
   </style>
 </head>
@@ -195,16 +219,17 @@
 <header>
   <div class="container">
     <nav>
-      <div class="brand">
-        <img src="assets/sqrd2-logo.png.png" alt="SQRD Temporary Works Logo" />
+      <div class="brand fade-in">
+        <img src="assets/sqrd2-logo.png" alt="SQRD Temporary Works Logo" />
         <div class="brand-text">
           <div class="brand-name">SQRD Temporary Works Engineering</div>
           <div class="brand-slogan">Temporary Works. Engineered Right.</div>
         </div>
       </div>
 
-      <ul>
+      <ul class="fade-in delay-1">
         <li><a href="#services">Temporary Works</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#contact">Enquiry</a></li>
         <li><a class="nav-cta" href="#contact">Send TW request</a></li>
@@ -215,7 +240,7 @@
 
 <section class="hero">
   <div class="container hero-inner">
-    <div>
+    <div class="fade-in">
       <div class="pill">
         <span class="pill-dot"></span>
         Temporary Works Engineering
@@ -246,7 +271,7 @@
       </p>
     </div>
 
-    <div>
+    <div class="fade-in delay-1">
       <div class="card">
         <strong>Delivery & approach</strong>
         <p style="margin-top:0.4rem">
@@ -268,7 +293,7 @@
 </section>
 
 <section id="services">
-  <div class="container">
+  <div class="container fade-in">
     <h2 class="section-title">Temporary Works services</h2>
     <p class="section-subtitle">
       A clear set of services you can reference directly in your email brief
@@ -299,15 +324,37 @@
   </div>
 </section>
 
+<section id="experience">
+  <div class="container fade-in">
+    <h2 class="section-title">Experience & sectors</h2>
+    <p class="section-subtitle">
+      Specialist Temporary Works support for contractors working on complex infrastructure, data centres and building projects in the UK and Middle East.
+    </p>
+
+    <div class="card">
+      <ul class="list">
+        <li>10+ years focused on Temporary Works and construction-stage engineering.</li>
+        <li>Experience across major infrastructure, rail, highways and large industrial / data centre projects.</li>
+        <li>Support to TWCs and site teams on formwork, platforms, hoists, MEWP access, retaining systems and lifting frames.</li>
+        <li>Designs aligned with BS 5975, Eurocodes and recognised supplier systems.</li>
+        <li>Practical, buildable details produced with Autodesk Robot Structural Analysis, spreadsheets and hand calculations.</li>
+      </ul>
+      <p style="color:var(--muted);font-size:0.82rem;margin-top:0.6rem">
+        The focus is always on safe, efficient and buildable solutions that work with real site constraints and programme pressures.
+      </p>
+    </div>
+  </div>
+</section>
+
 <section id="process">
   <div class="container">
-    <h2 class="section-title">How it works</h2>
-    <p class="section-subtitle">
+    <h2 class="section-title fade-in">How it works</h2>
+    <p class="section-subtitle fade-in delay-1">
       A simple process aligned with BS 5975 Temporary Works procedures.
     </p>
 
     <div class="two-col">
-      <div class="card">
+      <div class="card fade-in">
         <ul class="list">
           <li><strong>1. Send TW brief</strong> – drawings, loads, standards, TW category (if known) and programme.</li>
           <li><strong>2. Written proposal</strong> – scope, assumptions, fee and indicative delivery are emailed to you.</li>
@@ -316,7 +363,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card fade-in delay-1">
         <strong>Standards & tools</strong>
         <ul class="list" style="margin-top:0.4rem">
           <li>BS 5975 Temporary Works procedures</li>
@@ -330,7 +377,7 @@
 </section>
 
 <section id="contact">
-  <div class="container">
+  <div class="container fade-in">
     <h2 class="section-title">Temporary Works enquiry</h2>
     <p class="section-subtitle">
       To request Temporary Works support, please email with project details and any drawings or links.
@@ -349,8 +396,7 @@
       </ul>
 
       <a class="btn btn-primary"
-         href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Enquiry&body=Project%20Name:%0D%0ALocation:%0D%0ACompany:%0D%0AContact%20Name:%0D%0AEmail:%0D%0ATW%20Item:%0D%0AScope:%0D%0ALinks:%0D%0ATimescale:"
-      >
+         href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Enquiry&body=Project%20Name:%0D%0ALocation:%0D%0ACompany:%0D%0AContact%20Name:%0D%0AEmail:%0D%0ATW%20Item:%0D%0AScope:%0D%0ALinks:%0D%0ATimescale:">
         Email SQRD Temporary Works
       </a>
 
