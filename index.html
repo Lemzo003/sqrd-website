@@ -32,6 +32,7 @@
     nav{
       display:flex;align-items:center;justify-content:space-between;
       padding:0.7rem 0;
+      gap:1rem;
     }
     nav img{
       height:90px;border-radius:10px;
@@ -39,7 +40,7 @@
     }
     nav ul{
       list-style:none;display:flex;gap:1.3rem;
-      font-size:0.9rem;
+      font-size:0.9rem;flex-wrap:wrap;
     }
     .nav-cta{
       padding:0.4rem 1rem;border-radius:999px;
@@ -169,7 +170,7 @@
       border-radius:0.6rem;
       border:1px solid #4b5563;
       background:#020617;
-      color:var(--text);
+      color:#e5e7eb;
       font-size:0.9rem;
     }
     textarea{min-height:110px;resize:vertical}
@@ -198,11 +199,22 @@
       to{opacity:1;transform:translateY(0);}
     }
 
-    /* Mobile tweaks */
+    /* Medium & mobile tweaks */
     @media(max-width:960px){
-      nav ul{display:none}
-      .hero-inner,.two-col{grid-template-columns:1fr}
+      nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      nav ul{
+        padding-left:0.1rem;
+        gap:0.8rem;
+      }
+      .hero-inner,
+      .two-col{
+        grid-template-columns:1fr;
+      }
     }
+
     @media(max-width:480px){
       .hero h1{
         font-size:1.8rem;
@@ -210,6 +222,9 @@
       }
       .btn-primary{
         box-shadow:0 10px 25px rgba(250,204,21,0.28);
+      }
+      .container{
+        padding:0 1rem;
       }
     }
   </style>
@@ -256,8 +271,9 @@
       </p>
 
       <div class="hero-buttons">
+        <!-- EMAIL BUTTON WITH FEE / BUDGET LINE -->
         <a class="btn btn-primary"
-           href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Enquiry&body=Project%20Name:%0D%0ALocation:%0D%0ACompany:%0D%0AContact%20Name:%0D%0AEmail:%0D%0ATW%20Item:%0D%0AScope:%0D%0ALinks:%0D%0ATimescale:">
+           href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Enquiry&body=Project%20Name:%0D%0ALocation:%0D%0ACompany:%0D%0AContact%20Name:%0D%0AEmail:%0D%0ATW%20Item:%0D%0AScope:%0D%0ALinks:%0D%0ATimescale:%0D%0AFee%20/%20budget:">
           Send Temporary Works Enquiry
         </a>
 
@@ -273,19 +289,20 @@
 
     <div class="fade-in delay-1">
       <div class="card">
-        <strong>Delivery & approach</strong>
+        <strong>Delivery, programme & fees</strong>
         <p style="margin-top:0.4rem">
           Each enquiry is scoped individually. Programme and fee depend on:
         </p>
         <ul class="list">
-          <li>Temporary Works category (BS 5975)</li>
-          <li>Complexity and risk level</li>
-          <li>Information provided at the start</li>
-          <li>Required timescale / urgency</li>
+          <li>Temporary Works category (BS 5975) and risk level</li>
+          <li>Complexity of the arrangement and number of TW items</li>
+          <li>Information provided at the start (drawings, loads, ground data)</li>
+          <li>Required timescale / urgency and review requirements (Cat 2 / Cat 3)</li>
+          <li>Commercial basis – fixed fee per TW item or hourly / daily rate where appropriate</li>
         </ul>
         <p style="color:var(--muted);font-size:0.82rem;margin-top:0.55rem">
           A short written proposal is issued before work starts, confirming scope, assumptions, fee and indicative
-          delivery. If the brief changes, the proposal is updated by agreement.
+          delivery. If the brief changes, the proposal and fee are updated by agreement.
         </p>
       </div>
     </div>
@@ -393,10 +410,12 @@
         <li>Key loads / ground conditions / constraints</li>
         <li>Required timescale / programme</li>
         <li>Links to drawings / models (OneDrive, SharePoint, etc.)</li>
+        <li>Any fee / budget expectations or constraints (if helpful)</li>
       </ul>
 
+      <!-- CONTACT BUTTON WITH FEE / BUDGET LINE -->
       <a class="btn btn-primary"
-         href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Enquiry&body=Project%20Name:%0D%0ALocation:%0D%0ACompany:%0D%0AContact%20Name:%0D%0AEmail:%0D%0ATW%20Item:%0D%0AScope:%0D%0ALinks:%0D%0ATimescale:">
+         href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Enquiry&body=Project%20Name:%0D%0ALocation:%0D%0ACompany:%0D%0AContact%20Name:%0D%0AEmail:%0D%0ATW%20Item:%0D%0AScope:%0D%0ALinks:%0D%0ATimescale:%0D%0AFee%20/%20budget:">
         Email SQRD Temporary Works
       </a>
 
