@@ -9,57 +9,68 @@
   <meta name="description" content="SQRD2 provides specialist Temporary Works engineering design and independent checks aligned with BS 5975 and relevant Eurocodes. Clear, buildable solutions with calculations, sketches and design certificates." />
   <meta name="author" content="SQRD2 Temporary Works Engineering" />
 
-  <!-- Favicons (recommended) -->
-  <link rel="icon" type="image/png.png" href="/favicon.png.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png.png" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <!-- Open Graph (optional) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="SQRD2 Temporary Works Engineering" />
   <meta property="og:description" content="Temporary Works design & independent checks aligned with BS 5975. Clear calculations, buildable sketches, design certificates." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/sqrd2-logo.png.png" />
+  <meta property="og:image" content="/assets/sqrd2-logo.png" />
 
   <style>
     :root{
+      --brand:#f28c1b;        /* SQRD2 orange */
+      --brand2:#ffb35c;       /* lighter orange */
+
       --bg:#0b1220;
-      --card:#111a2e;
-      --muted:#a9b3c7;
-      --text:#eaf0ff;
-      --accent:#6aa7ff;
-      --accent2:#7cf0c2;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
+      --card:#121b2f;
+      --muted:#a6b0c3;
+      --text:#eef2ff;
+      --line:rgba(255,255,255,.10);
+
+      --shadow:0 12px 35px rgba(0,0,0,.35);
+      --radius:20px;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(106,167,255,.18), transparent 60%),
-                  radial-gradient(900px 500px at 90% 20%, rgba(124,240,194,.14), transparent 55%),
-                  var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 600px at 20% 0%, rgba(242,140,27,.14), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(255,179,92,.10), transparent 55%),
+        var(--bg);
       color:var(--text);
-      line-height:1.55;
+      line-height:1.6;
     }
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    .wrap{max-width:1120px; margin:0 auto; padding:24px}
+
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.72);
+      background: rgba(11,18,32,.75);
       border-bottom:1px solid var(--line);
     }
+
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:16px;
       padding:14px 24px;
-      max-width:1100px; margin:0 auto;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px;
+      max-width:1120px; margin:0 auto;
     }
 
-    /* ✅ LOGO CONFIG (updated) */
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    /* Logo */
     .logoWrap{
       width:44px; height:44px;
       border-radius:12px;
@@ -69,8 +80,8 @@
       border:1px solid var(--line);
     }
     .logoImg{
-      width: 90px;
-      height: 90px;
+      width:40px;
+      height:40px;
       object-fit: contain;
       display:block;
     }
@@ -80,7 +91,8 @@
       padding:8px 10px; border-radius:12px; color:var(--muted);
       border:1px solid transparent;
     }
-    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
+    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.04)}
+
     .lang{
       display:flex; gap:8px; align-items:center;
       border:1px solid var(--line); border-radius:999px; padding:6px;
@@ -88,58 +100,68 @@
     }
     .lang button{
       cursor:pointer; border:0; background:transparent; color:var(--muted);
-      padding:7px 10px; border-radius:999px; font-weight:600;
+      padding:7px 10px; border-radius:999px; font-weight:700;
     }
-    .lang button.active{background:rgba(106,167,255,.22); color:var(--text)}
+    .lang button.active{background:rgba(242,140,27,.18); color:var(--text)}
+
     .hero{
       padding:46px 0 18px;
       display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
       align-items:stretch;
     }
+
     .card{
-      background: rgba(17,26,46,.72);
+      background: rgba(18,27,47,.78);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
+
     .heroMain{padding:26px}
-    h1{margin:0 0 10px; font-size:34px; line-height:1.15}
+    h1{margin:0 0 10px; font-size:38px; line-height:1.12}
     .sub{color:var(--muted); margin:0 0 18px; font-size:16px}
+
     .badges{display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 18px}
     .badge{
       font-size:12px; color:var(--text);
       border:1px solid var(--line);
-      padding:6px 10px; border-radius:999px;
-      background: rgba(255,255,255,.03);
+      padding:7px 11px; border-radius:999px;
+      background: rgba(255,255,255,.04);
     }
+
     .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
-      padding:12px 14px;
+      height:46px;
+      padding:0 16px;
       border-radius:14px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.05);
       color:var(--text);
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.16)}
     .btn.primary{
-      background: linear-gradient(135deg, rgba(106,167,255,.95), rgba(124,240,194,.72));
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
       border-color: transparent;
       color:#07101f;
     }
-    .btn:hover{transform: translateY(-1px)}
+
     .heroSide{padding:18px}
     .kpi{display:grid; gap:10px;}
     .kpiItem{
       padding:14px;
       border-radius:16px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
     }
     .kpiItem b{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
     .kpiItem span{font-size:14px}
+
     section{padding:18px 0}
     .sectionHead{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
@@ -147,50 +169,53 @@
     }
     h2{margin:0; font-size:22px}
     .hint{color:var(--muted); font-size:14px}
-    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+
     .box{padding:18px}
     .box h3{margin:0 0 8px; font-size:16px}
     .box p{margin:0; color:var(--muted); font-size:14px}
+
     ul{margin:10px 0 0 18px; color:var(--muted)}
     li{margin:6px 0}
-    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+
+    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
     .price{
       padding:18px;
       border:1px solid var(--line);
       border-radius:18px;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
     }
-    .price .tag{font-size:12px; color:#07101f; font-weight:800;
-      display:inline-block; padding:5px 10px; border-radius:999px;
-      background: rgba(124,240,194,.92);
+    .price .tag{
+      font-size:12px;
+      color:#07101f;
+      font-weight:900;
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background: rgba(255,179,92,.95);
       margin-bottom:10px;
     }
     .price h3{margin:0 0 8px}
-    .price .from{color:var(--text); font-weight:800; font-size:18px; margin:0 0 8px}
+    .price .from{color:var(--text); font-weight:900; font-size:18px; margin:0 0 8px}
     .price .note{color:var(--muted); font-size:13px; margin:0}
-    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .stepNum{
-      width:30px; height:30px; border-radius:10px;
-      display:inline-flex; align-items:center; justify-content:center;
-      background: rgba(106,167,255,.22);
-      border:1px solid var(--line);
-      margin-bottom:10px;
-      font-weight:800;
-    }
+
     form{display:grid; gap:12px}
     .row{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-    label{font-size:13px; color:var(--muted); font-weight:700}
+    label{font-size:13px; color:var(--muted); font-weight:800}
+
     input, select, textarea{
       width:100%;
       padding:12px 12px;
       border-radius:14px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
       color:var(--text);
       outline:none;
     }
     textarea{min-height:110px; resize:vertical}
+
     footer{
       padding:26px 0 40px;
       border-top:1px solid var(--line);
@@ -199,11 +224,14 @@
     }
     .small{font-size:12px; color:var(--muted)}
     .rtl{direction:rtl}
+
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
-      .grid3, .grid2, .pricing, .steps{grid-template-columns:1fr}
+      .grid3, .grid2, .pricing{grid-template-columns:1fr}
       .row{grid-template-columns:1fr}
       nav{justify-content:flex-start}
+      .wrap{padding:16px}
+      h1{font-size:32px}
     }
   </style>
 
@@ -224,7 +252,7 @@
   <div class="topbar">
     <div class="brand" aria-label="SQRD2">
       <div class="logoWrap" aria-hidden="true">
-        <img class="logoImg" src="/assets/sqrd2-logo.png.png" alt="SQRD2 logo" />
+        <img class="logoImg" src="/assets/sqrd2-logo.png" alt="SQRD2 logo" />
       </div>
       <div>
         <div data-i18n="brandTitle">SQRD2 Temporary Works Engineering</div>
@@ -334,7 +362,7 @@
     <div class="grid2" style="margin-top:14px">
       <div class="card box">
         <h3 data-i18n="s4t">Hoists & Temporary Installations</h3>
-        <p data-i18n="s4p">Engineering verification of temporary arrangements linked to construction access.</p>
+        <p data-i18n="s4p">Engineering verification of temporary arrangements linked with construction access.</p>
         <ul>
           <li data-i18n="s4l1">Hoist landing platforms</li>
           <li data-i18n="s4l2">Tie arrangements and local checks</li>
@@ -406,7 +434,7 @@
       </div>
 
       <div class="card price">
-        <div class="tag" style="background:rgba(106,167,255,.95)" data-i18n="p2tag">Preferred</div>
+        <div class="tag" style="background:rgba(242,140,27,.95)" data-i18n="p2tag">Preferred</div>
         <h3 data-i18n="p2t">Design + Independent Check</h3>
         <p class="from" data-i18n="p2from">From AED 4,500 – 7,000</p>
         <ul>
@@ -535,9 +563,6 @@
 <script>
   document.getElementById("yr").textContent = new Date().getFullYear();
 
-  // Keep your existing EN/AR dictionary from your current version
-  // ✅ If you already have the full dict, paste it here.
-  // Minimal safe default below (so the toggle still works):
   const dict = {
     en: {
       brandTitle:"SQRD2 Temporary Works Engineering",
@@ -622,6 +647,7 @@
   function setLang(lang){
     btnEN.classList.toggle("active", lang==="en");
     btnAR.classList.toggle("active", lang==="ar");
+
     document.documentElement.lang = (lang==="ar") ? "ar" : "en";
     document.documentElement.dir  = (lang==="ar") ? "rtl" : "ltr";
     document.body.classList.toggle("rtl", lang==="ar");
@@ -641,6 +667,3 @@
 
 </body>
 </html>
-
-
-
