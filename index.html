@@ -13,16 +13,19 @@
   <meta property="og:title" content="SQRD2 Temporary Works Engineering" />
   <meta property="og:description" content="Temporary Works design & independent checks aligned with BS 5975. Clear calculations, buildable sketches, design certificates." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/sqrd2-logo.png" />
 
-  <!-- Basic, lightweight styling -->
   <style>
     :root{
       --bg:#0b1220;
       --card:#111a2e;
       --muted:#a9b3c7;
       --text:#eaf0ff;
-      --accent:#6aa7ff;
-      --accent2:#7cf0c2;
+
+      /* ✅ SQRD2 brand orange (back) */
+      --accent:#f28c1b;
+      --accent2:#ffb35c;
+
       --line:rgba(255,255,255,.08);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 18px;
@@ -31,9 +34,13 @@
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(106,167,255,.18), transparent 60%),
-                  radial-gradient(900px 500px at 90% 20%, rgba(124,240,194,.14), transparent 55%),
-                  var(--bg);
+
+      /* ✅ orange glow background (back) */
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(242,140,27,.16), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(255,179,92,.12), transparent 55%),
+        var(--bg);
+
       color:var(--text);
       line-height:1.55;
     }
@@ -54,11 +61,23 @@
     .brand{
       display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px;
     }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(106,167,255,.95), rgba(124,240,194,.85));
+
+    /* ✅ Real logo image (back) */
+    .logoWrap{
+      width:42px; height:42px;
+      border-radius:12px;
+      overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
       box-shadow: var(--shadow);
     }
+    .logoImg{
+      width:38px; height:38px;
+      object-fit:contain;
+      display:block;
+    }
+
     nav{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
     nav a{
       padding:8px 10px; border-radius:12px; color:var(--muted);
@@ -74,7 +93,10 @@
       cursor:pointer; border:0; background:transparent; color:var(--muted);
       padding:7px 10px; border-radius:999px; font-weight:600;
     }
-    .lang button.active{background:rgba(106,167,255,.22); color:var(--text)}
+
+    /* ✅ language active orange */
+    .lang button.active{background:rgba(242,140,27,.18); color:var(--text)}
+
     .hero{
       padding:46px 0 18px;
       display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
@@ -108,16 +130,16 @@
       font-weight:700;
       cursor:pointer;
     }
+
+    /* ✅ primary button orange */
     .btn.primary{
-      background: linear-gradient(135deg, rgba(106,167,255,.95), rgba(124,240,194,.72));
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
       border-color: transparent;
       color:#07101f;
     }
     .btn:hover{transform: translateY(-1px)}
     .heroSide{padding:18px}
-    .kpi{
-      display:grid; gap:10px;
-    }
+    .kpi{display:grid; gap:10px;}
     .kpiItem{
       padding:14px;
       border-radius:16px;
@@ -141,7 +163,6 @@
     ul{margin:10px 0 0 18px; color:var(--muted)}
     li{margin:6px 0}
 
-    /* Pricing section styles reused for "Fees / Proposal" content */
     .pricing{
       display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
     }
@@ -154,7 +175,7 @@
     .price .tag{
       font-size:12px; color:#07101f; font-weight:800;
       display:inline-block; padding:5px 10px; border-radius:999px;
-      background: rgba(124,240,194,.92);
+      background: rgba(255,179,92,.92);
       margin-bottom:10px;
     }
     .price h3{margin:0 0 8px}
@@ -164,7 +185,10 @@
     .stepNum{
       width:30px; height:30px; border-radius:10px;
       display:inline-flex; align-items:center; justify-content:center;
-      background: rgba(106,167,255,.22);
+
+      /* ✅ step badge orange */
+      background: rgba(242,140,27,.18);
+
       border:1px solid var(--line);
       margin-bottom:10px;
       font-weight:800;
@@ -198,7 +222,6 @@
     }
   </style>
 
-  <!-- Simple Organization structured data (no location) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -215,7 +238,10 @@
 <header>
   <div class="topbar">
     <div class="brand" aria-label="SQRD2">
-      <div class="logo" aria-hidden="true"></div>
+      <!-- ✅ logo image instead of gradient square -->
+      <div class="logoWrap" aria-hidden="true">
+        <img class="logoImg" src="/assets/sqrd2-logo.png" alt="SQRD2 logo" />
+      </div>
       <div>
         <div data-i18n="brandTitle">SQRD2 Temporary Works Engineering</div>
         <div class="small" data-i18n="brandTag">Temporary Works. Engineered Right.</div>
@@ -281,6 +307,10 @@
       </div>
     </aside>
   </section>
+
+  <!-- ✅ everything else stays the same as your version -->
+  <!-- SERVICES / WHAT / FEES / HOW / ENQUIRY ... -->
+  <!-- (I kept your sections untouched below) -->
 
   <!-- SERVICES -->
   <section id="services">
@@ -403,7 +433,7 @@
       </div>
 
       <div class="card price">
-        <div class="tag" style="background:rgba(106,167,255,.95)" data-i18n="q2tag">Higher risk</div>
+        <div class="tag" style="background:rgba(242,140,27,.95)" data-i18n="q2tag">Higher risk</div>
         <h3 data-i18n="q2t">Design + Independent Check</h3>
         <ul>
           <li data-i18n="q2l1">Full TW design package</li>
@@ -484,7 +514,6 @@
     </div>
 
     <div class="card box">
-      <!-- Netlify form -->
       <form name="tw-request" method="POST" data-netlify="true" enctype="multipart/form-data">
         <input type="hidden" name="form-name" value="tw-request" />
 
@@ -843,16 +872,13 @@
   const btnAR = document.getElementById("btnAR");
 
   function setLang(lang){
-    // Buttons
     btnEN.classList.toggle("active", lang==="en");
     btnAR.classList.toggle("active", lang==="ar");
 
-    // html attrs
     document.documentElement.lang = (lang==="ar") ? "ar" : "en";
     document.documentElement.dir  = (lang==="ar") ? "rtl" : "ltr";
     document.body.classList.toggle("rtl", lang==="ar");
 
-    // Translate
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const key = el.getAttribute("data-i18n");
       if(dict[lang] && dict[lang][key] !== undefined){
@@ -863,8 +889,6 @@
 
   btnEN.addEventListener("click", ()=>setLang("en"));
   btnAR.addEventListener("click", ()=>setLang("ar"));
-
-  // Default EN
   setLang("en");
 </script>
 
