@@ -21,8 +21,8 @@
 
   <style>
     :root{
-      --brand:#f28c1b;        /* SQRD2 orange */
-      --brand2:#ffb35c;       /* lighter orange */
+      --brand:#f28c1b;
+      --brand2:#ffb35c;
 
       --bg:#0b1220;
       --card:#121b2f;
@@ -60,17 +60,30 @@
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:16px;
-      padding:18px 24px; /* slightly taller header for bigger logo */
+      padding:18px 24px;
       max-width:1120px; margin:0 auto;
     }
 
+    /* ✅ Brand now matches the hero title */
     .brand{
-      display:flex; align-items:center; gap:12px;
-      font-weight:800;
+      display:flex; align-items:center; gap:14px;
+      font-weight:900;
       letter-spacing:.2px;
     }
+    .brandTitle{
+      font-size:15px;
+      font-weight:900;
+      line-height:1.1;
+    }
+    .brandTag{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+      margin-top:4px;
+      line-height:1.15;
+    }
 
-    /* Bigger Logo (professional) */
+    /* Bigger Logo */
     .logoWrap{
       width:64px;
       height:64px;
@@ -238,6 +251,7 @@
       .topbar{padding:14px 16px}
       .logoWrap{width:56px; height:56px}
       .logoImg{width:50px; height:50px}
+      .brandTitle{font-size:14px}
     }
   </style>
 
@@ -261,8 +275,9 @@
         <img class="logoImg" src="/assets/sqrd2-logo.png" alt="SQRD2 logo" />
       </div>
       <div>
-        <div data-i18n="brandTitle">SQRD2 Temporary Works Engineering</div>
-        <div class="small" data-i18n="brandTag">Temporary Works Engineering for Construction</div>
+        <!-- ✅ Title + slogan now match the hero -->
+        <div class="brandTitle" data-i18n="brandTitle">Temporary Works Design & Independent Checks</div>
+        <div class="brandTag" data-i18n="brandTag">SQRD2 Temporary Works Engineering (BS 5975)</div>
       </div>
     </div>
 
@@ -567,7 +582,7 @@
 
 <footer>
   <div class="wrap">
-    <div>© <span id="yr"></span> <span data-i18n="brandTitle">SQRD2 Temporary Works Engineering</span>.</div>
+    <div>© <span id="yr"></span> <span data-i18n="brandTitle">Temporary Works Design & Independent Checks</span>.</div>
     <div class="small" style="margin-top:6px" data-i18n="foot2">Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes.</div>
   </div>
 </footer>
@@ -577,8 +592,8 @@
 
   const dict = {
     en: {
-      brandTitle:"SQRD2 Temporary Works Engineering",
-      brandTag:"Temporary Works Engineering for Construction",
+      brandTitle:"Temporary Works Design & Independent Checks",
+      brandTag:"SQRD2 Temporary Works Engineering (BS 5975)",
       navServices:"Services", navWhat:"What to send", navFees:"Fees", navEnquiry:"Enquiry", navCTA:"Request TW Design",
       heroH1:"Temporary Works Design & Independent Checks",
       heroSub:"BS 5975 aligned deliverables for construction activities: clear calculations, buildable sketches and design certificates.",
@@ -628,8 +643,8 @@
       foot2:"Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes."
     },
     ar: {
-      brandTitle:"SQRD2 للهندسة المؤقتة",
-      brandTag:"هندسة الأعمال المؤقتة لأعمال الإنشاء",
+      brandTitle:"تصميم الأعمال المؤقتة + تدقيق مستقل",
+      brandTag:"SQRD2 للهندسة المؤقتة (BS 5975)",
       navServices:"الخدمات", navWhat:"المعلومات المطلوبة", navFees:"الرسوم", navEnquiry:"طلب", navCTA:"اطلب تصميم أعمال مؤقتة",
       heroH1:"تصميم الأعمال المؤقتة + تدقيق مستقل",
       heroSub:"مخرجات متوافقة مع BS 5975: حسابات واضحة، رسومات قابلة للتنفيذ، وشهادات تصميم.",
