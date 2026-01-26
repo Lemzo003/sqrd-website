@@ -60,7 +60,7 @@
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:16px;
-      padding:14px 24px;
+      padding:18px 24px; /* slightly taller header for bigger logo */
       max-width:1120px; margin:0 auto;
     }
 
@@ -70,18 +70,21 @@
       letter-spacing:.2px;
     }
 
-    /* Logo */
+    /* Bigger Logo (professional) */
     .logoWrap{
-      width:44px; height:44px;
-      border-radius:12px;
+      width:64px;
+      height:64px;
+      border-radius:14px;
       overflow:hidden;
-      display:flex; align-items:center; justify-content:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       background: rgba(255,255,255,.04);
       border:1px solid var(--line);
     }
     .logoImg{
-      width:40px;
-      height:40px;
+      width:58px;
+      height:58px;
       object-fit: contain;
       display:block;
     }
@@ -232,6 +235,9 @@
       nav{justify-content:flex-start}
       .wrap{padding:16px}
       h1{font-size:32px}
+      .topbar{padding:14px 16px}
+      .logoWrap{width:56px; height:56px}
+      .logoImg{width:50px; height:50px}
     }
   </style>
 
@@ -256,7 +262,7 @@
       </div>
       <div>
         <div data-i18n="brandTitle">SQRD2 Temporary Works Engineering</div>
-        <div class="small" data-i18n="brandTag">Temporary Works. Engineered Right.</div>
+        <div class="small" data-i18n="brandTag">Temporary Works Engineering for Construction</div>
       </div>
     </div>
 
@@ -362,7 +368,7 @@
     <div class="grid2" style="margin-top:14px">
       <div class="card box">
         <h3 data-i18n="s4t">Hoists & Temporary Installations</h3>
-        <p data-i18n="s4p">Engineering verification of temporary arrangements linked with construction access.</p>
+        <p data-i18n="s4p">Engineering verification of temporary arrangements associated with construction access systems.</p>
         <ul>
           <li data-i18n="s4l1">Hoist landing platforms</li>
           <li data-i18n="s4l2">Tie arrangements and local checks</li>
@@ -407,7 +413,7 @@
     <div class="card box" style="margin-top:14px">
       <h3 data-i18n="w4t">Scope boundary</h3>
       <p data-i18n="w4p">
-        Temporary Works only. If information is insufficient, a Feasibility Review may be proposed first.
+        Temporary Works services only. Where information is insufficient, a paid Feasibility Review may be required prior to full design.
       </p>
     </div>
   </section>
@@ -417,6 +423,12 @@
     <div class="sectionHead">
       <h2 data-i18n="feesH">Packages & Fees (AED)</h2>
       <div class="hint" data-i18n="feesHint">Final fee confirmed after drawings / scope review.</div>
+    </div>
+
+    <div class="card box" style="margin-bottom:14px">
+      <p class="small" style="margin:0" data-i18n="feeGuide">
+        Fees shown are indicative only and provided for early budgeting purposes.
+      </p>
     </div>
 
     <div class="pricing">
@@ -566,7 +578,7 @@
   const dict = {
     en: {
       brandTitle:"SQRD2 Temporary Works Engineering",
-      brandTag:"Temporary Works. Engineered Right.",
+      brandTag:"Temporary Works Engineering for Construction",
       navServices:"Services", navWhat:"What to send", navFees:"Fees", navEnquiry:"Enquiry", navCTA:"Request TW Design",
       heroH1:"Temporary Works Design & Independent Checks",
       heroSub:"BS 5975 aligned deliverables for construction activities: clear calculations, buildable sketches and design certificates.",
@@ -583,7 +595,7 @@
       s2l1:"Working platforms (incl. MEWP)", s2l2:"Scaffold platforms / birdcages", s2l3:"Edge protection interfaces",
       s3t:"Propping, Retaining & Stability", s3p:"Temporary support, restraint and stability checks during construction stages.",
       s3l1:"Temporary propping to walls/cores/frames", s3l2:"Retaining / kingpost checks", s3l3:"Local strengthening details",
-      s4t:"Hoists & Temporary Installations", s4p:"Engineering verification of temporary arrangements linked to construction access.",
+      s4t:"Hoists & Temporary Installations", s4p:"Engineering verification of temporary arrangements associated with construction access systems.",
       s4l1:"Hoist landing platforms", s4l2:"Tie arrangements and local checks", s4l3:"Temporary steelwork verification",
       s5t:"Independent Checks", s5p:"Independent check to agreed category (CAT 2 / CAT 3) aligned with project procedures.",
       s5l1:"Concept + calculation review", s5l2:"Buildability / assumptions", s5l3:"Check certificate (as applicable)",
@@ -591,8 +603,10 @@
       w1t:"Drawings / sketches", w1p:"GA / sections / details + any site constraints (access, foundations, limits).",
       w2t:"Loads & use", w2p:"Concrete pour heights/rate (if relevant), imposed loads, plant, wheel loads, etc.",
       w3t:"Programme", w3p:"Required issue date, urgency (standard / fast-track), revision expectations.",
-      w4t:"Scope boundary", w4p:"Temporary Works only. If information is insufficient, a Feasibility Review may be proposed first.",
+      w4t:"Scope boundary",
+      w4p:"Temporary Works services only. Where information is insufficient, a paid Feasibility Review may be required prior to full design.",
       feesH:"Packages & Fees (AED)", feesHint:"Final fee confirmed after drawings / scope review.",
+      feeGuide:"Fees shown are indicative only and provided for early budgeting purposes.",
       p1tag:"Most common", p1t:"Single Temporary Works Item", p1from:"From AED 2,000 – 4,000",
       p1l1:"Calculations (PDF) with assumptions", p1l2:"Buildable sketch / mark-ups", p1l3:"Design certificate (as applicable)", p1l4:"1 revision included",
       p1n:"Typical: formwork, propping, platform, hoist landing checks.",
@@ -615,7 +629,7 @@
     },
     ar: {
       brandTitle:"SQRD2 للهندسة المؤقتة",
-      brandTag:"الأعمال المؤقتة… مُهندَسة بشكل صحيح.",
+      brandTag:"هندسة الأعمال المؤقتة لأعمال الإنشاء",
       navServices:"الخدمات", navWhat:"المعلومات المطلوبة", navFees:"الرسوم", navEnquiry:"طلب", navCTA:"اطلب تصميم أعمال مؤقتة",
       heroH1:"تصميم الأعمال المؤقتة + تدقيق مستقل",
       heroSub:"مخرجات متوافقة مع BS 5975: حسابات واضحة، رسومات قابلة للتنفيذ، وشهادات تصميم.",
@@ -626,8 +640,11 @@
       k2t:"استجابة سريعة", k2v:"إصدار عرض خلال 24–48 ساعة بعد استلام الرسومات ونطاق العمل.",
       k3t:"حدود النطاق", k3v:"أعمال مؤقتة فقط (بدون تصميم أعمال دائمة).",
       svcH:"خدمات الأعمال المؤقتة", svcHint:"اختر بند أعمال مؤقتة — أرسل الرسومات للحصول على عرض.",
+      s4p:"التحقق الهندسي للترتيبات المؤقتة المرتبطة بأنظمة الوصول في مواقع الإنشاء.",
       whatH:"المعلومات المطلوبة", whatHint:"تسريع العرض يحتاج مدخلات واضحة.",
       feesH:"الباقات والرسوم (AED)", feesHint:"الرسوم النهائية تُعتمد بعد مراجعة الرسومات ونطاق العمل.",
+      feeGuide:"الرسوم المعروضة إرشادية فقط ولأغراض التقدير المبدئي.",
+      w4p:"خدمات الأعمال المؤقتة فقط. عند نقص المعلومات قد يلزم إجراء مراجعة جدوى مدفوعة قبل التصميم الكامل.",
       revH:"مراجعة جدوى للأعمال المؤقتة (مدفوعة)",
       revP:"750 – 1,250 AED. مراجعة مكتوبة لتأكيد الجدوى والمخاطر والقيود والخطوات التالية. تُخصم من قيمة التصميم عند التعيين.",
       revCTA:"اطلب مراجعة جدوى", revCTA2:"اطلب تصميم أعمال مؤقتة",
