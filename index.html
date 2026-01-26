@@ -6,26 +6,257 @@
 
   <title>SQRD2 Temporary Works Engineering | Design & Independent Checks (BS 5975)</title>
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="description" content="Clear, fast and reliable Temporary Works engineering design and independent checks aligned with BS 5975 and relevant Eurocodes." />
+  <meta name="description" content="SQRD2 provides specialist Temporary Works engineering design and independent checks aligned with BS 5975 and relevant Eurocodes. Clear, buildable solutions with calculations, sketches and design certificates." />
   <meta name="author" content="SQRD2 Temporary Works Engineering" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="SQRD2 Temporary Works Engineering" />
-  <meta property="og:description" content="Clear, fast and reliable Temporary Works design & independent checks aligned with BS 5975." />
+  <meta property="og:description" content="Temporary Works design & independent checks aligned with BS 5975. Clear calculations, buildable sketches, design certificates." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/sqrd2-logo.png" />
 
-  <!-- Basic, lightweight styling -->
-  <!-- (UNCHANGED CSS – omitted here for brevity in explanation, kept identical in your file) -->
+  <style>
+    :root{
+      --brand:#f28c1b;        /* SQRD2 orange */
+      --brand2:#ffb35c;       /* lighter orange */
+
+      --bg:#0b1220;
+      --card:#121b2f;
+      --muted:#a6b0c3;
+      --text:#eef2ff;
+      --line:rgba(255,255,255,.10);
+
+      --shadow:0 12px 35px rgba(0,0,0,.35);
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 600px at 20% 0%, rgba(242,140,27,.14), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(255,179,92,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1120px; margin:0 auto; padding:24px}
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.75);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      padding:14px 24px;
+      max-width:1120px; margin:0 auto;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    /* Logo */
+    .logoWrap{
+      width:44px; height:44px;
+      border-radius:12px;
+      overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+    }
+    .logoImg{
+      width:40px;
+      height:40px;
+      object-fit: contain;
+      display:block;
+    }
+
+    nav{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+    nav a{
+      padding:8px 10px; border-radius:12px; color:var(--muted);
+      border:1px solid transparent;
+    }
+    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.04)}
+
+    .lang{
+      display:flex; gap:8px; align-items:center;
+      border:1px solid var(--line); border-radius:999px; padding:6px;
+      background: rgba(255,255,255,.03);
+    }
+    .lang button{
+      cursor:pointer; border:0; background:transparent; color:var(--muted);
+      padding:7px 10px; border-radius:999px; font-weight:700;
+    }
+    .lang button.active{background:rgba(242,140,27,.18); color:var(--text)}
+
+    .hero{
+      padding:46px 0 18px;
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
+      align-items:stretch;
+    }
+
+    .card{
+      background: rgba(18,27,47,.78);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .heroMain{padding:26px}
+    h1{margin:0 0 10px; font-size:38px; line-height:1.12}
+    .sub{color:var(--muted); margin:0 0 18px; font-size:16px}
+
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 18px}
+    .badge{
+      font-size:12px; color:var(--text);
+      border:1px solid var(--line);
+      padding:7px 11px; border-radius:999px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      height:46px;
+      padding:0 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.16)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      border-color: transparent;
+      color:#07101f;
+    }
+
+    .heroSide{padding:18px}
+    .kpi{display:grid; gap:10px;}
+    .kpiItem{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .kpiItem b{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
+    .kpiItem span{font-size:14px}
+
+    section{padding:18px 0}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin:8px 0 12px;
+    }
+    h2{margin:0; font-size:22px}
+    .hint{color:var(--muted); font-size:14px}
+
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+
+    .box{padding:18px}
+    .box h3{margin:0 0 8px; font-size:16px}
+    .box p{margin:0; color:var(--muted); font-size:14px}
+
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    li{margin:6px 0}
+
+    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+    .price{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background: rgba(255,255,255,.04);
+    }
+    .price .tag{
+      font-size:12px;
+      color:#07101f;
+      font-weight:900;
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background: rgba(255,179,92,.95);
+      margin-bottom:10px;
+    }
+    .price h3{margin:0 0 8px}
+    .price .from{color:var(--text); font-weight:900; font-size:18px; margin:0 0 8px}
+    .price .note{color:var(--muted); font-size:13px; margin:0}
+
+    form{display:grid; gap:12px}
+    .row{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    label{font-size:13px; color:var(--muted); font-weight:800}
+
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .small{font-size:12px; color:var(--muted)}
+    .rtl{direction:rtl}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .grid3, .grid2, .pricing{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr}
+      nav{justify-content:flex-start}
+      .wrap{padding:16px}
+      h1{font-size:32px}
+    }
+  </style>
+
+  <!-- Organization structured data (no location) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SQRD2 Temporary Works Engineering",
+    "url":"https://sqrd2buildingdesignsolution.ltd/",
+    "description":"Specialist Temporary Works engineering design and independent checks aligned with BS 5975 and relevant Eurocodes."
+  }
+  </script>
 </head>
 
 <body>
 <header>
   <div class="topbar">
     <div class="brand" aria-label="SQRD2">
-      <div class="logo" aria-hidden="true"></div>
+      <div class="logoWrap" aria-hidden="true">
+        <img class="logoImg" src="/assets/sqrd2-logo.png" alt="SQRD2 logo" />
+      </div>
       <div>
         <div data-i18n="brandTitle">SQRD2 Temporary Works Engineering</div>
-        <div class="small" data-i18n="brandTag">Clear · Fast · Reliable</div>
+        <div class="small" data-i18n="brandTag">Temporary Works. Engineered Right.</div>
       </div>
     </div>
 
@@ -43,14 +274,289 @@
   </div>
 </header>
 
-<!-- ALL CONTENT SECTIONS UNCHANGED -->
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="card heroMain">
+      <h1 data-i18n="heroH1">Temporary Works Design & Independent Checks</h1>
+      <p class="sub" data-i18n="heroSub">
+        BS 5975 aligned deliverables for construction activities: clear calculations, buildable sketches and design certificates.
+      </p>
+
+      <div class="badges">
+        <span class="badge" data-i18n="b1">Temporary Works only</span>
+        <span class="badge" data-i18n="b2">Design certificates</span>
+        <span class="badge" data-i18n="b3">CAT 2 / CAT 3 checks</span>
+        <span class="badge" data-i18n="b4">Site-focused & practical</span>
+      </div>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="#enquiry" data-i18n="cta1">Request Temporary Works Design</a>
+        <a class="btn" href="#fees" data-i18n="cta2">View Packages & Fees</a>
+        <a class="btn" href="#services" data-i18n="cta3">View Services</a>
+      </div>
+
+      <p class="small" style="margin-top:14px" data-i18n="heroNote">
+        No free design advice by email. Submit an enquiry with drawings to receive a proposal.
+      </p>
+    </div>
+
+    <aside class="card heroSide">
+      <div class="kpi">
+        <div class="kpiItem">
+          <b data-i18n="k1t">Typical deliverables</b>
+          <span data-i18n="k1v">Calculations (PDF), marked-up sketch, certificate, holding points (as applicable).</span>
+        </div>
+        <div class="kpiItem">
+          <b data-i18n="k2t">Fast response</b>
+          <span data-i18n="k2v">Proposal issued within 24–48 hours once drawings and scope are received.</span>
+        </div>
+        <div class="kpiItem">
+          <b data-i18n="k3t">Scope filter</b>
+          <span data-i18n="k3v">Temporary Works only (no permanent works design).</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="sectionHead">
+      <h2 data-i18n="svcH">Temporary Works Services</h2>
+      <div class="hint" data-i18n="svcHint">Choose a TW item — submit drawings to receive a proposal.</div>
+    </div>
+
+    <div class="grid3">
+      <div class="card box">
+        <h3 data-i18n="s1t">Formwork & Falsework</h3>
+        <p data-i18n="s1p">Design and checks for walls, slabs, beams, rafts and supporting arrangements.</p>
+        <ul>
+          <li data-i18n="s1l1">Concrete pressure / spacing / ties</li>
+          <li data-i18n="s1l2">Falsework / props layouts</li>
+          <li data-i18n="s1l3">Backpropping / reshoring</li>
+        </ul>
+      </div>
+
+      <div class="card box">
+        <h3 data-i18n="s2t">Platforms & Access</h3>
+        <p data-i18n="s2p">Working platforms and access solutions for site operations.</p>
+        <ul>
+          <li data-i18n="s2l1">Working platforms (incl. MEWP)</li>
+          <li data-i18n="s2l2">Scaffold platforms / birdcages</li>
+          <li data-i18n="s2l3">Edge protection interfaces</li>
+        </ul>
+      </div>
+
+      <div class="card box">
+        <h3 data-i18n="s3t">Propping, Retaining & Stability</h3>
+        <p data-i18n="s3p">Temporary support, restraint and stability checks during construction stages.</p>
+        <ul>
+          <li data-i18n="s3l1">Temporary propping to walls/cores/frames</li>
+          <li data-i18n="s3l2">Retaining / kingpost checks</li>
+          <li data-i18n="s3l3">Local strengthening details</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="card box">
+        <h3 data-i18n="s4t">Hoists & Temporary Installations</h3>
+        <p data-i18n="s4p">Engineering verification of temporary arrangements linked with construction access.</p>
+        <ul>
+          <li data-i18n="s4l1">Hoist landing platforms</li>
+          <li data-i18n="s4l2">Tie arrangements and local checks</li>
+          <li data-i18n="s4l3">Temporary steelwork verification</li>
+        </ul>
+      </div>
+
+      <div class="card box">
+        <h3 data-i18n="s5t">Independent Checks</h3>
+        <p data-i18n="s5p">Independent check to agreed category (CAT 2 / CAT 3) aligned with project procedures.</p>
+        <ul>
+          <li data-i18n="s5l1">Concept + calculation review</li>
+          <li data-i18n="s5l2">Buildability / assumptions</li>
+          <li data-i18n="s5l3">Check certificate (as applicable)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO SEND -->
+  <section id="what">
+    <div class="sectionHead">
+      <h2 data-i18n="whatH">What to send</h2>
+      <div class="hint" data-i18n="whatHint">Fast proposals require clear inputs.</div>
+    </div>
+
+    <div class="grid3">
+      <div class="card box">
+        <h3 data-i18n="w1t">Drawings / sketches</h3>
+        <p data-i18n="w1p">GA / sections / details + any site constraints (access, foundations, limits).</p>
+      </div>
+      <div class="card box">
+        <h3 data-i18n="w2t">Loads & use</h3>
+        <p data-i18n="w2p">Concrete pour heights/rate (if relevant), imposed loads, plant, wheel loads, etc.</p>
+      </div>
+      <div class="card box">
+        <h3 data-i18n="w3t">Programme</h3>
+        <p data-i18n="w3p">Required issue date, urgency (standard / fast-track), revision expectations.</p>
+      </div>
+    </div>
+
+    <div class="card box" style="margin-top:14px">
+      <h3 data-i18n="w4t">Scope boundary</h3>
+      <p data-i18n="w4p">
+        Temporary Works only. If information is insufficient, a Feasibility Review may be proposed first.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEES / PACKAGES -->
+  <section id="fees">
+    <div class="sectionHead">
+      <h2 data-i18n="feesH">Packages & Fees (AED)</h2>
+      <div class="hint" data-i18n="feesHint">Final fee confirmed after drawings / scope review.</div>
+    </div>
+
+    <div class="pricing">
+      <div class="card price">
+        <div class="tag" data-i18n="p1tag">Most common</div>
+        <h3 data-i18n="p1t">Single Temporary Works Item</h3>
+        <p class="from" data-i18n="p1from">From AED 2,000 – 4,000</p>
+        <ul>
+          <li data-i18n="p1l1">Calculations (PDF) with assumptions</li>
+          <li data-i18n="p1l2">Buildable sketch / mark-ups</li>
+          <li data-i18n="p1l3">Design certificate (as applicable)</li>
+          <li data-i18n="p1l4">1 revision included</li>
+        </ul>
+        <p class="note" data-i18n="p1n">Typical: formwork, propping, platform, hoist landing checks.</p>
+      </div>
+
+      <div class="card price">
+        <div class="tag" style="background:rgba(242,140,27,.95)" data-i18n="p2tag">Preferred</div>
+        <h3 data-i18n="p2t">Design + Independent Check</h3>
+        <p class="from" data-i18n="p2from">From AED 4,500 – 7,000</p>
+        <ul>
+          <li data-i18n="p2l1">Full TW design package</li>
+          <li data-i18n="p2l2">Independent check (CAT 2 / CAT 3)</li>
+          <li data-i18n="p2l3">Certificate & holding points</li>
+          <li data-i18n="p2l4">Issue pack suitable for site</li>
+        </ul>
+        <p class="note" data-i18n="p2n">Best for high-risk or high-value temporary works.</p>
+      </div>
+
+      <div class="card price">
+        <div class="tag" style="background:rgba(255,255,255,.85)" data-i18n="p3tag">Urgent</div>
+        <h3 data-i18n="p3t">Fast-Track / Emergency TW</h3>
+        <p class="from" data-i18n="p3from">+30% to +50% surcharge</p>
+        <ul>
+          <li data-i18n="p3l1">24–48 hour turnaround</li>
+          <li data-i18n="p3l2">Weekend / out-of-hours support</li>
+          <li data-i18n="p3l3">Priority revision slot</li>
+          <li data-i18n="p3l4">Clear issue timeline</li>
+        </ul>
+        <p class="note" data-i18n="p3n">Subject to scope clarity and information availability.</p>
+      </div>
+    </div>
+
+    <div class="card box" style="margin-top:14px">
+      <h3 data-i18n="revH">Temporary Works Feasibility Review (Paid)</h3>
+      <p data-i18n="revP">
+        AED 750 – 1,250. Short written review to confirm feasibility, key risks, constraints and next steps.
+        Fee deductible if full design is instructed.
+      </p>
+      <div class="ctaRow">
+        <a class="btn primary" href="#enquiry" data-i18n="revCTA">Request Feasibility Review</a>
+        <a class="btn" href="#enquiry" data-i18n="revCTA2">Request Full TW Design</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY -->
+  <section id="enquiry">
+    <div class="sectionHead">
+      <h2 data-i18n="enqH">Request Temporary Works Design</h2>
+      <div class="hint" data-i18n="enqHint">Complete the form — you’ll receive a proposal once scope is reviewed.</div>
+    </div>
+
+    <div class="card box">
+      <form name="tw-request" method="POST" data-netlify="true" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="tw-request" />
+
+        <div class="row">
+          <div>
+            <label data-i18n="c1">Your name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div>
+            <label data-i18n="c2">Email</label>
+            <input type="email" name="email" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label data-i18n="c3">Request type</label>
+            <select name="request_type" required>
+              <option value="" selected disabled data-i18n="opt0">Select…</option>
+              <option value="Full TW Design" data-i18n="opt1">Full TW Design</option>
+              <option value="Feasibility Review (Paid)" data-i18n="opt2">Feasibility Review (Paid)</option>
+              <option value="Independent Check" data-i18n="opt3">Independent Check</option>
+              <option value="Fast-Track / Emergency" data-i18n="opt4">Fast-Track / Emergency</option>
+            </select>
+          </div>
+          <div>
+            <label data-i18n="c4">TW item</label>
+            <select name="tw_item" required>
+              <option value="" selected disabled data-i18n="opt0">Select…</option>
+              <option>Formwork / Falsework</option>
+              <option>Propping / Backpropping</option>
+              <option>Working Platform / Crane Mat</option>
+              <option>Hoist Landing / Loading Platform</option>
+              <option>Temporary Stability / Restraint</option>
+              <option>Other (describe below)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label data-i18n="c5">Required issue date</label>
+            <input type="date" name="required_date" />
+          </div>
+          <div>
+            <label data-i18n="c6">Independent check required?</label>
+            <select name="check_required">
+              <option value="No" data-i18n="no">No</option>
+              <option value="Yes - CAT 2" data-i18n="cat2">Yes – CAT 2</option>
+              <option value="Yes - CAT 3" data-i18n="cat3">Yes – CAT 3</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label data-i18n="c7">Dimensions / loads / brief description</label>
+          <textarea name="brief" placeholder="Example: wall height, pour sequence, platform area, plant wheel loads, soil bearing, constraints…"></textarea>
+        </div>
+
+        <div>
+          <label data-i18n="c8">Upload drawings / sketches (PDF / images)</label>
+          <input type="file" name="files" />
+        </div>
+
+        <button class="btn primary" type="submit" data-i18n="send">Send request</button>
+        <p class="small" style="margin-top:10px" data-i18n="privacy">Confidential: information is reviewed only for scoping and delivery.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
 
 <footer>
   <div class="wrap">
-    <div data-i18n="foot1">© <span id="yr"></span> SQRD2 Temporary Works Engineering.</div>
-    <div class="small" style="margin-top:6px" data-i18n="foot2">
-      Temporary Works design & independent checks — Clear · Fast · Reliable.
-    </div>
+    <div>© <span id="yr"></span> <span data-i18n="brandTitle">SQRD2 Temporary Works Engineering</span>.</div>
+    <div class="small" style="margin-top:6px" data-i18n="foot2">Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes.</div>
   </div>
 </footer>
 
@@ -60,13 +566,78 @@
   const dict = {
     en: {
       brandTitle:"SQRD2 Temporary Works Engineering",
-      brandTag:"Clear · Fast · Reliable",
-      foot2:"Temporary Works design & independent checks — Clear · Fast · Reliable."
+      brandTag:"Temporary Works. Engineered Right.",
+      navServices:"Services", navWhat:"What to send", navFees:"Fees", navEnquiry:"Enquiry", navCTA:"Request TW Design",
+      heroH1:"Temporary Works Design & Independent Checks",
+      heroSub:"BS 5975 aligned deliverables for construction activities: clear calculations, buildable sketches and design certificates.",
+      b1:"Temporary Works only", b2:"Design certificates", b3:"CAT 2 / CAT 3 checks", b4:"Site-focused & practical",
+      cta1:"Request Temporary Works Design", cta2:"View Packages & Fees", cta3:"View Services",
+      heroNote:"No free design advice by email. Submit an enquiry with drawings to receive a proposal.",
+      k1t:"Typical deliverables", k1v:"Calculations (PDF), marked-up sketch, certificate, holding points (as applicable).",
+      k2t:"Fast response", k2v:"Proposal issued within 24–48 hours once drawings and scope are received.",
+      k3t:"Scope filter", k3v:"Temporary Works only (no permanent works design).",
+      svcH:"Temporary Works Services", svcHint:"Choose a TW item — submit drawings to receive a proposal.",
+      s1t:"Formwork & Falsework", s1p:"Design and checks for walls, slabs, beams, rafts and supporting arrangements.",
+      s1l1:"Concrete pressure / spacing / ties", s1l2:"Falsework / props layouts", s1l3:"Backpropping / reshoring",
+      s2t:"Platforms & Access", s2p:"Working platforms and access solutions for site operations.",
+      s2l1:"Working platforms (incl. MEWP)", s2l2:"Scaffold platforms / birdcages", s2l3:"Edge protection interfaces",
+      s3t:"Propping, Retaining & Stability", s3p:"Temporary support, restraint and stability checks during construction stages.",
+      s3l1:"Temporary propping to walls/cores/frames", s3l2:"Retaining / kingpost checks", s3l3:"Local strengthening details",
+      s4t:"Hoists & Temporary Installations", s4p:"Engineering verification of temporary arrangements linked to construction access.",
+      s4l1:"Hoist landing platforms", s4l2:"Tie arrangements and local checks", s4l3:"Temporary steelwork verification",
+      s5t:"Independent Checks", s5p:"Independent check to agreed category (CAT 2 / CAT 3) aligned with project procedures.",
+      s5l1:"Concept + calculation review", s5l2:"Buildability / assumptions", s5l3:"Check certificate (as applicable)",
+      whatH:"What to send", whatHint:"Fast proposals require clear inputs.",
+      w1t:"Drawings / sketches", w1p:"GA / sections / details + any site constraints (access, foundations, limits).",
+      w2t:"Loads & use", w2p:"Concrete pour heights/rate (if relevant), imposed loads, plant, wheel loads, etc.",
+      w3t:"Programme", w3p:"Required issue date, urgency (standard / fast-track), revision expectations.",
+      w4t:"Scope boundary", w4p:"Temporary Works only. If information is insufficient, a Feasibility Review may be proposed first.",
+      feesH:"Packages & Fees (AED)", feesHint:"Final fee confirmed after drawings / scope review.",
+      p1tag:"Most common", p1t:"Single Temporary Works Item", p1from:"From AED 2,000 – 4,000",
+      p1l1:"Calculations (PDF) with assumptions", p1l2:"Buildable sketch / mark-ups", p1l3:"Design certificate (as applicable)", p1l4:"1 revision included",
+      p1n:"Typical: formwork, propping, platform, hoist landing checks.",
+      p2tag:"Preferred", p2t:"Design + Independent Check", p2from:"From AED 4,500 – 7,000",
+      p2l1:"Full TW design package", p2l2:"Independent check (CAT 2 / CAT 3)", p2l3:"Certificate & holding points", p2l4:"Issue pack suitable for site",
+      p2n:"Best for high-risk or high-value temporary works.",
+      p3tag:"Urgent", p3t:"Fast-Track / Emergency TW", p3from:"+30% to +50% surcharge",
+      p3l1:"24–48 hour turnaround", p3l2:"Weekend / out-of-hours support", p3l3:"Priority revision slot", p3l4:"Clear issue timeline",
+      p3n:"Subject to scope clarity and information availability.",
+      revH:"Temporary Works Feasibility Review (Paid)",
+      revP:"AED 750 – 1,250. Short written review to confirm feasibility, key risks, constraints and next steps. Fee deductible if full design is instructed.",
+      revCTA:"Request Feasibility Review", revCTA2:"Request Full TW Design",
+      enqH:"Request Temporary Works Design", enqHint:"Complete the form — you’ll receive a proposal once scope is reviewed.",
+      c1:"Your name", c2:"Email", c3:"Request type", c4:"TW item", c5:"Required issue date", c6:"Independent check required?",
+      c7:"Dimensions / loads / brief description", c8:"Upload drawings / sketches (PDF / images)",
+      opt0:"Select…", opt1:"Full TW Design", opt2:"Feasibility Review (Paid)", opt3:"Independent Check", opt4:"Fast-Track / Emergency",
+      no:"No", cat2:"Yes – CAT 2", cat3:"Yes – CAT 3",
+      send:"Send request", privacy:"Confidential: information is reviewed only for scoping and delivery.",
+      foot2:"Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes."
     },
     ar: {
       brandTitle:"SQRD2 للهندسة المؤقتة",
-      brandTag:"واضح · سريع · موثوق",
-      foot2:"تصميم وتدقيق الأعمال المؤقتة — واضح · سريع · موثوق"
+      brandTag:"الأعمال المؤقتة… مُهندَسة بشكل صحيح.",
+      navServices:"الخدمات", navWhat:"المعلومات المطلوبة", navFees:"الرسوم", navEnquiry:"طلب", navCTA:"اطلب تصميم أعمال مؤقتة",
+      heroH1:"تصميم الأعمال المؤقتة + تدقيق مستقل",
+      heroSub:"مخرجات متوافقة مع BS 5975: حسابات واضحة، رسومات قابلة للتنفيذ، وشهادات تصميم.",
+      b1:"أعمال مؤقتة فقط", b2:"شهادات تصميم", b3:"تدقيق CAT 2 / CAT 3", b4:"حلول عملية للموقع",
+      cta1:"اطلب تصميم أعمال مؤقتة", cta2:"عرض الباقات والرسوم", cta3:"عرض الخدمات",
+      heroNote:"لا توجد استشارات تصميم مجانية عبر البريد. أرسل الطلب مع الرسومات للحصول على عرض.",
+      k1t:"المخرجات المعتادة", k1v:"حسابات (PDF)، سكتش/تحديدات، شهادة، ونقاط تعليق (حسب الحاجة).",
+      k2t:"استجابة سريعة", k2v:"إصدار عرض خلال 24–48 ساعة بعد استلام الرسومات ونطاق العمل.",
+      k3t:"حدود النطاق", k3v:"أعمال مؤقتة فقط (بدون تصميم أعمال دائمة).",
+      svcH:"خدمات الأعمال المؤقتة", svcHint:"اختر بند أعمال مؤقتة — أرسل الرسومات للحصول على عرض.",
+      whatH:"المعلومات المطلوبة", whatHint:"تسريع العرض يحتاج مدخلات واضحة.",
+      feesH:"الباقات والرسوم (AED)", feesHint:"الرسوم النهائية تُعتمد بعد مراجعة الرسومات ونطاق العمل.",
+      revH:"مراجعة جدوى للأعمال المؤقتة (مدفوعة)",
+      revP:"750 – 1,250 AED. مراجعة مكتوبة لتأكيد الجدوى والمخاطر والقيود والخطوات التالية. تُخصم من قيمة التصميم عند التعيين.",
+      revCTA:"اطلب مراجعة جدوى", revCTA2:"اطلب تصميم أعمال مؤقتة",
+      enqH:"طلب تصميم أعمال مؤقتة", enqHint:"أكمل النموذج — ستستلم عرضاً بعد مراجعة النطاق.",
+      c1:"الاسم", c2:"البريد الإلكتروني", c3:"نوع الطلب", c4:"بند الأعمال المؤقتة", c5:"تاريخ الإصدار المطلوب", c6:"هل يلزم تدقيق مستقل؟",
+      c7:"الأبعاد/الأحمال/وصف مختصر", c8:"رفع الرسومات/السكتش (PDF / صور)",
+      opt0:"اختر…", opt1:"تصميم كامل", opt2:"مراجعة جدوى (مدفوعة)", opt3:"تدقيق مستقل", opt4:"سريع/طوارئ",
+      no:"لا", cat2:"نعم – CAT 2", cat3:"نعم – CAT 3",
+      send:"إرسال الطلب", privacy:"سري: تُراجع المعلومات فقط لأغراض التسعير والتنفيذ.",
+      foot2:"تصميم وتدقيق أعمال مؤقتة وفق BS 5975 واليوركودات ذات الصلة."
     }
   };
 
@@ -76,17 +647,21 @@
   function setLang(lang){
     btnEN.classList.toggle("active", lang==="en");
     btnAR.classList.toggle("active", lang==="ar");
-    document.documentElement.lang = lang;
+
+    document.documentElement.lang = (lang==="ar") ? "ar" : "en";
     document.documentElement.dir  = (lang==="ar") ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", lang==="ar");
 
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const key = el.getAttribute("data-i18n");
-      if(dict[lang][key]) el.textContent = dict[lang][key];
+      if(dict[lang] && dict[lang][key] !== undefined){
+        el.textContent = dict[lang][key];
+      }
     });
   }
 
-  btnEN.onclick=()=>setLang("en");
-  btnAR.onclick=()=>setLang("ar");
+  btnEN.addEventListener("click", ()=>setLang("en"));
+  btnAR.addEventListener("click", ()=>setLang("ar"));
   setLang("en");
 </script>
 
