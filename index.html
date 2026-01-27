@@ -63,7 +63,7 @@
     .brand{
       display:flex; align-items:center; gap:14px;
       font-weight:900; letter-spacing:.2px;
-      min-width: 240px;
+      min-width: 260px;
     }
 
     /* REAL LOGO IMAGE (BIGGER + RESPONSIVE) */
@@ -75,7 +75,14 @@
     }
 
     .brandTitle{font-size:16px; line-height:1.2}
-    .brandTag{font-size:12px; color:var(--muted); font-weight:800}
+
+    /* SLOGAN */
+    .brandTag{
+      font-size:12px;
+      color:var(--brand2);
+      font-weight:900;
+      letter-spacing:.2px;
+    }
 
     nav{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
     nav a{
@@ -169,16 +176,6 @@
     ul{margin:10px 0 0 18px; color:var(--muted)}
     li{margin:6px 0}
 
-    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .stepNum{
-      width:30px; height:30px; border-radius:10px;
-      display:inline-flex; align-items:center; justify-content:center;
-      background: rgba(242,140,27,.18);
-      border:1px solid var(--line);
-      margin-bottom:10px;
-      font-weight:900;
-    }
-
     form{display:grid; gap:12px}
     .row{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
     label{font-size:13px; color:var(--muted); font-weight:900}
@@ -210,7 +207,7 @@
 
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
-      .grid3, .grid2, .steps{grid-template-columns:1fr}
+      .grid3, .grid2{grid-template-columns:1fr}
       .row{grid-template-columns:1fr}
       nav{justify-content:flex-start}
       .logoImg{width:60px}
@@ -225,18 +222,6 @@
       h1{font-size:26px}
     }
   </style>
-
-  <!-- Simple Organization structured data (no location) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"SQRD2 Temporary Works Engineering",
-    "url":"https://sqrd2buildingdesignsolution.ltd/",
-    "description":"Specialist Temporary Works engineering design and independent checks aligned with BS 5975 and relevant Eurocodes.",
-    "sameAs":[]
-  }
-  </script>
 </head>
 
 <body>
@@ -246,7 +231,7 @@
       <img class="logoImg" src="/assets/sqrd2-logo.png" alt="SQRD2 Logo" />
       <div>
         <div class="brandTitle" data-i18n="brandTitle">SQRD2 Temporary Works Engineering</div>
-        <div class="brandTag" data-i18n="brandTag">Temporary Works Design & Independent Checks</div>
+        <div class="brandTag" data-i18n="brandTag">Structural Qualite Reliable Design</div>
       </div>
     </div>
 
@@ -267,7 +252,6 @@
 
 <main class="wrap">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="card heroMain">
       <h1 data-i18n="heroH1">Temporary Works Design & Independent Checks</h1>
@@ -312,7 +296,6 @@
     </aside>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <div class="sectionHead">
       <h2 data-i18n="svcH">Temporary Works Services</h2>
@@ -374,7 +357,6 @@
     </div>
   </section>
 
-  <!-- WHAT TO SEND -->
   <section id="what">
     <div class="sectionHead">
       <h2 data-i18n="whatH">What to send</h2>
@@ -402,7 +384,6 @@
     </div>
   </section>
 
-  <!-- FEES / PROPOSAL (NO PRICES) -->
   <section id="fees">
     <div class="sectionHead">
       <h2 data-i18n="feesH">Fees & Proposals</h2>
@@ -418,7 +399,6 @@
     </div>
   </section>
 
-  <!-- ENQUIRY -->
   <section id="enquiry">
     <div class="sectionHead">
       <h2 data-i18n="enqH">Request Temporary Works Design</h2>
@@ -465,20 +445,18 @@
   <div class="wrap">
     <div>© <span id="yr"></span> <span data-i18n="foot1">SQRD2 Temporary Works Engineering.</span></div>
     <div class="small" style="margin-top:6px" data-i18n="foot2">
-      Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes.
+      Structural Qualite Reliable Design — Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes.
     </div>
   </div>
 </footer>
 
 <script>
-  // Year
   document.getElementById("yr").textContent = new Date().getFullYear();
 
-  // Simple i18n dictionary
   const dict = {
     en: {
       brandTitle:"SQRD2 Temporary Works Engineering",
-      brandTag:"Temporary Works Design & Independent Checks",
+      brandTag:"Structural Qualite Reliable Design",
 
       navServices:"Services",
       navWhat:"What to send",
@@ -562,12 +540,13 @@
       privacy:"Confidential: information is reviewed only for scoping and delivery.",
 
       foot1:"SQRD2 Temporary Works Engineering.",
-      foot2:"Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes."
+      foot2:"Structural Qualite Reliable Design — Temporary Works design & independent checks aligned with BS 5975 and relevant Eurocodes."
     },
 
     ar: {
       brandTitle:"SQRD2 للهندسة المؤقتة",
-      brandTag:"تصميم أعمال مؤقتة + تدقيق مستقل",
+      /* Arabic slogan kept meaningful + aligned */
+      brandTag:"جودة إنشائية، تصميم موثوق",
 
       navServices:"الخدمات",
       navWhat:"المعلومات المطلوبة",
@@ -651,14 +630,13 @@
       privacy:"سري: تُراجع المعلومات فقط لأغراض التسعير والتنفيذ.",
 
       foot1:"SQRD2 للهندسة المؤقتة.",
-      foot2:"تصميم وتدقيق أعمال مؤقتة وفق BS 5975 واليوركودات ذات الصلة."
+      foot2:"جودة إنشائية، تصميم موثوق — تصميم وتدقيق أعمال مؤقتة وفق BS 5975 واليوركودات ذات الصلة."
     }
   };
 
   const btnEN = document.getElementById("btnEN");
   const btnAR = document.getElementById("btnAR");
 
-  // Support placeholder translation too
   function applyI18n(lang){
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const key = el.getAttribute("data-i18n");
@@ -684,18 +662,16 @@
 
     applyI18n(lang);
 
-    // store preference
     try { localStorage.setItem("sqrd_lang", lang); } catch(e){}
   }
 
   btnEN.addEventListener("click", ()=>setLang("en"));
   btnAR.addEventListener("click", ()=>setLang("ar"));
 
-  // Default: stored language else EN
   let saved = "en";
   try { saved = localStorage.getItem("sqrd_lang") || "en"; } catch(e){}
   setLang(saved);
 </script>
 
 </body>
-</html>
+  </html>
