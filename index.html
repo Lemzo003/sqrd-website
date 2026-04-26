@@ -190,6 +190,23 @@
     }
     textarea{min-height:110px; resize:vertical}
 
+    .contactStrip{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin:12px 0 0;
+    }
+    .notice{
+      display:none;
+      margin:12px 0 0;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(242,140,27,.35);
+      background:rgba(242,140,27,.10);
+      color:var(--text);
+      font-size:14px;
+    }
+    .notice.show{display:block}
+    .helpLine{font-size:12px;color:var(--muted);margin-top:8px}
+
     footer{
       padding:26px 0 40px;
       border-top:1px solid var(--line);
@@ -240,6 +257,7 @@
       <a href="#what" data-i18n="navWhat">What to send</a>
       <a href="#fees" data-i18n="navFees">Fees</a>
       <a href="#enquiry" data-i18n="navEnquiry">Enquiry</a>
+      <a href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Design%20Enquiry" data-i18n="navEmail">Email</a>
       <a class="btn primary" href="#enquiry" data-i18n="navCTA">Request TW Design</a>
 
       <div class="lang" role="group" aria-label="Language toggle">
@@ -269,6 +287,7 @@
 
       <div class="ctaRow">
         <a class="btn primary" href="#enquiry" data-i18n="cta1">Request Temporary Works Design</a>
+        <a class="btn" href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Design%20Enquiry" data-i18n="ctaEmail">Email Directly</a>
         <a class="btn" href="#fees" data-i18n="cta2">How fees are set</a>
         <a class="btn" href="#services" data-i18n="cta3">View Services</a>
       </div>
@@ -406,31 +425,51 @@
     </div>
 
     <div class="card box">
-      <form name="tw-request" method="POST" data-netlify="true" enctype="multipart/form-data">
+      <form id="twRequestForm" name="tw-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/">
         <input type="hidden" name="form-name" value="tw-request" />
+        <p style="display:none">
+          <label>Do not fill this field: <input name="bot-field" /></label>
+        </p>
 
         <div class="row">
           <div>
             <label data-i18n="c1">Your name</label>
-            <input type="text" name="name" required />
+            <input type="text" name="name" autocomplete="name" required />
           </div>
           <div>
             <label data-i18n="c2">Email</label>
-            <input type="email" name="email" required />
+            <input type="email" name="email" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label data-i18n="c3">Company / project</label>
+            <input type="text" name="company_project" autocomplete="organization" />
+          </div>
+          <div>
+            <label data-i18n="c4">Phone / WhatsApp</label>
+            <input type="tel" name="phone" autocomplete="tel" />
           </div>
         </div>
 
         <div>
           <label data-i18n="c7">Dimensions / loads / brief description</label>
-          <textarea name="brief" data-i18n-placeholder="briefPh" placeholder="Example: wall height, pour sequence, platform area, plant wheel loads, soil bearing, constraints…"></textarea>
+          <textarea name="brief" data-i18n-placeholder="briefPh" placeholder="Example: wall height, pour sequence, platform area, plant wheel loads, soil bearing, constraints…" required></textarea>
         </div>
 
         <div>
           <label data-i18n="c8">Upload drawings / sketches (PDF / images)</label>
-          <input type="file" name="files" />
+          <input type="file" name="files" accept=".pdf,.png,.jpg,.jpeg,.webp,.dwg,.dxf" multiple />
+          <div class="helpLine" data-i18n="fileNote">For large drawing packs, send the enquiry first then reply by email with the files/link.</div>
         </div>
 
-        <button class="btn primary" type="submit" data-i18n="send">Send request</button>
+        <div class="contactStrip">
+          <button class="btn primary" type="submit" data-i18n="send">Send request</button>
+          <a class="btn" id="directEmailBtn" href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Design%20Enquiry" data-i18n="emailBtn">Email Directly</a>
+        </div>
+
+        <div id="formNotice" class="notice" role="status"></div>
 
         <p class="small" style="margin-top:10px" data-i18n="privacy">
           Confidential: information is reviewed only for scoping and delivery.
@@ -462,6 +501,7 @@
       navWhat:"What to send",
       navFees:"Fees",
       navEnquiry:"Enquiry",
+      navEmail:"Email",
       navCTA:"Request TW Design",
 
       heroH1:"Temporary Works Design & Independent Checks",
@@ -473,6 +513,7 @@
       b4:"Site-focused & practical",
 
       cta1:"Request Temporary Works Design",
+      ctaEmail:"Email Directly",
       cta2:"How fees are set",
       cta3:"View Services",
 
@@ -533,10 +574,16 @@
       enqHint:"Complete the form — you’ll receive a proposal once scope is reviewed.",
       c1:"Your name",
       c2:"Email",
+      c3:"Company / project",
+      c4:"Phone / WhatsApp",
       c7:"Dimensions / loads / brief description",
       c8:"Upload drawings / sketches (PDF / images)",
       briefPh:"Example: wall height, pour sequence, platform area, plant wheel loads, soil bearing, constraints…",
       send:"Send request",
+      emailBtn:"Email Directly",
+      fileNote:"For large drawing packs, send the enquiry first then reply by email with the files/link.",
+      formOk:"Thank you. Your enquiry has been submitted. If you do not receive a reply, please use the direct email button.",
+      formFail:"The form backend is not confirmed on this host. Your email app will open so you can send the enquiry directly.",
       privacy:"Confidential: information is reviewed only for scoping and delivery.",
 
       foot1:"SQRD2 Temporary Works Engineering.",
@@ -552,6 +599,7 @@
       navWhat:"المعلومات المطلوبة",
       navFees:"الرسوم",
       navEnquiry:"طلب",
+      navEmail:"البريد",
       navCTA:"اطلب تصميم أعمال مؤقتة",
 
       heroH1:"تصميم الأعمال المؤقتة + تدقيق مستقل",
@@ -563,6 +611,7 @@
       b4:"حلول عملية للموقع",
 
       cta1:"اطلب تصميم أعمال مؤقتة",
+      ctaEmail:"إرسال بريد مباشر",
       cta2:"كيف يتم تحديد الرسوم",
       cta3:"عرض الخدمات",
 
@@ -623,10 +672,16 @@
       enqHint:"أكمل النموذج — ستستلم عرضاً بعد مراجعة النطاق.",
       c1:"الاسم",
       c2:"البريد الإلكتروني",
+      c3:"الشركة / المشروع",
+      c4:"الهاتف / واتساب",
       c7:"الأبعاد/الأحمال/وصف مختصر",
       c8:"رفع الرسومات/السكتش (PDF / صور)",
       briefPh:"مثال: ارتفاع الجدار، تسلسل الصب، مساحة المنصة، أحمال عجلات المعدات، قدرة تحمل التربة، القيود…",
       send:"إرسال الطلب",
+      emailBtn:"إرسال بريد مباشر",
+      fileNote:"للملفات الكبيرة، أرسل الطلب أولاً ثم أرسل الملفات/الرابط عبر البريد.",
+      formOk:"شكراً. تم إرسال طلبك. إذا لم تستلم رداً، استخدم زر البريد المباشر.",
+      formFail:"لم يتم تأكيد عمل نظام النموذج على هذا الاستضافة. سيتم فتح تطبيق البريد لإرسال الطلب مباشرة.",
       privacy:"سري: تُراجع المعلومات فقط لأغراض التسعير والتنفيذ.",
 
       foot1:"SQRD2 للهندسة المؤقتة.",
@@ -671,6 +726,80 @@
   let saved = "en";
   try { saved = localStorage.getItem("sqrd_lang") || "en"; } catch(e){}
   setLang(saved);
+
+  // CONTACT FORM ENGINE
+  // Works with Netlify Forms when the site is deployed on Netlify.
+  // If the backend is not available, it opens a direct email fallback.
+  const CONTACT_EMAIL = "mail@sqrd2buildingdesignsolution.ltd"; // Replace with your real receiving email if different.
+  const form = document.getElementById("twRequestForm");
+  const notice = document.getElementById("formNotice");
+  const directEmailBtn = document.getElementById("directEmailBtn");
+
+  function currentLang(){ return document.documentElement.lang === "ar" ? "ar" : "en"; }
+
+  function buildMailto(){
+    const fd = new FormData(form);
+    const subject = encodeURIComponent("Temporary Works Design Enquiry - SQRD2");
+    const bodyLines = [
+      "Temporary Works Design Enquiry",
+      "",
+      "Name: " + (fd.get("name") || ""),
+      "Email: " + (fd.get("email") || ""),
+      "Company / Project: " + (fd.get("company_project") || ""),
+      "Phone / WhatsApp: " + (fd.get("phone") || ""),
+      "",
+      "Brief / loads / dimensions:",
+      (fd.get("brief") || ""),
+      "",
+      "Note: Please attach drawings/sketches to this email if required."
+    ];
+    return "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + encodeURIComponent(bodyLines.join("\n"));
+  }
+
+  function showNotice(messageKey, forceText){
+    const lang = currentLang();
+    notice.textContent = forceText || (dict[lang] && dict[lang][messageKey]) || messageKey;
+    notice.classList.add("show");
+  }
+
+  directEmailBtn.addEventListener("click", function(){
+    directEmailBtn.setAttribute("href", buildMailto());
+  });
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const oldText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = currentLang() === "ar" ? "جارٍ الإرسال..." : "Sending...";
+
+    try{
+      const fd = new FormData(form);
+      if(!fd.get("form-name")) fd.append("form-name", "tw-request");
+
+      const res = await fetch("/", { method:"POST", body:fd });
+
+      if(res.ok){
+        showNotice("formOk");
+        form.reset();
+      }else{
+        throw new Error("Form backend did not accept the enquiry.");
+      }
+    }catch(err){
+      showNotice("formFail");
+      window.location.href = buildMailto();
+    }finally{
+      submitBtn.disabled = false;
+      submitBtn.textContent = oldText;
+    }
+  });
+
 </script>
 
 </body>
