@@ -1,476 +1,692 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SQRD² | Temporary Works Design Engineering</title><style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+<title>SQRD² | Temporary Works Engineering</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    color: #1a1a1a;
-    background: #ffffff;
-    line-height: 1.6;
+body{
+font-family:'Inter',sans-serif;
+background:#ffffff;
+color:#1a1a1a;
+overflow-x:hidden;
 }
 
-header {
-    background: #081b33;
-    color: white;
-    padding: 18px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* ================= HEADER ================= */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(4,16,31,0.92);
+backdrop-filter:blur(10px);
 }
 
-.logo h1 {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 1px;
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
 }
 
-.logo p {
-    font-size: 11px;
-    color: #d9d9d9;
+.logo img{
+height:70px;
+width:auto;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
+.logo-text h1{
+color:white;
+font-size:32px;
+font-weight:800;
 }
 
-nav a:hover {
-    color: #f3b300;
+.logo-text p{
+color:#f7931e;
+font-size:11px;
+letter-spacing:1.5px;
+font-weight:700;
 }
 
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-    url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop') center/cover;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    padding: 80px 50px;
-    color: white;
+nav a{
+color:white;
+text-decoration:none;
+margin-left:28px;
+font-size:14px;
+font-weight:600;
+transition:0.3s;
 }
 
-.hero-content {
-    max-width: 760px;
+nav a:hover{
+color:#f7931e;
 }
 
-.hero h2 {
-    font-size: 64px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    font-weight: 800;
+/* ================= HERO ================= */
+
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+padding:0 70px;
+overflow:hidden;
 }
 
-.hero-highlight {
-    color: #f3b300;
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:1;
 }
 
-.hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #e5e5e5;
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(
+90deg,
+rgba(2,8,20,0.94) 20%,
+rgba(2,8,20,0.50) 100%
+);
+z-index:2;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+.hero-content{
+position:relative;
+z-index:3;
+max-width:850px;
+color:white;
 }
 
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+.hero-badge{
+display:inline-block;
+padding:10px 18px;
+border-radius:50px;
+background:rgba(247,147,30,0.18);
+border:1px solid rgba(247,147,30,0.4);
+color:#f7931e;
+font-size:13px;
+font-weight:700;
+margin-bottom:25px;
+letter-spacing:1px;
 }
 
-.btn-primary {
-    background: #f3b300;
-    color: #081b33;
+.hero h2{
+font-size:82px;
+line-height:1;
+margin-bottom:25px;
+font-weight:800;
 }
 
-.btn-primary:hover {
-    background: #ffd24d;
+.hero-highlight{
+color:#f7931e;
 }
 
-.btn-secondary {
-    border: 2px solid white;
-    color: white;
+.hero p{
+font-size:22px;
+max-width:720px;
+color:#e4e4e4;
+margin-bottom:35px;
+line-height:1.6;
 }
 
-.btn-secondary:hover {
-    background: white;
-    color: #081b33;
+/* ================= STATS ================= */
+
+.stats{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+margin-bottom:35px;
 }
 
-.quick-info {
-    background: #081b33;
-    color: white;
-    padding: 25px 50px;
+.stat-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(8px);
+padding:18px 24px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+min-width:170px;
 }
 
-.quick-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+.stat-card h3{
+font-size:24px;
+color:#f7931e;
+margin-bottom:5px;
 }
 
-.quick-card {
-    border-left: 4px solid #f3b300;
-    padding-left: 15px;
+.stat-card span{
+font-size:14px;
+color:#d8d8d8;
 }
 
-.quick-card h4 {
-    margin-bottom: 5px;
+/* ================= BUTTONS ================= */
+
+.buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
-.section {
-    padding: 80px 50px;
+.btn{
+padding:15px 30px;
+border-radius:6px;
+text-decoration:none;
+font-weight:700;
+transition:0.3s;
+display:inline-block;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
+.btn-primary{
+background:#f7931e;
+color:#081b33;
 }
 
-.section-title h3 {
-    font-size: 42px;
-    color: #081b33;
-    margin-bottom: 15px;
+.btn-primary:hover{
+background:#ffb04d;
 }
 
-.section-title p {
-    color: #666;
-    max-width: 700px;
-    margin: auto;
+.btn-secondary{
+border:2px solid white;
+color:white;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+.btn-secondary:hover{
+background:white;
+color:#081b33;
 }
 
-.service-card {
-    background: white;
-    border: 1px solid #e6e6e6;
-    padding: 30px;
-    border-radius: 8px;
-    transition: 0.3s;
+/* ================= SECTIONS ================= */
+
+.section{
+padding:90px 60px;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+.section-title{
+text-align:center;
+margin-bottom:55px;
 }
 
-.service-icon {
-    font-size: 38px;
-    margin-bottom: 20px;
+.section-title h3{
+font-size:44px;
+margin-bottom:15px;
+color:#081b33;
 }
 
-.service-card h4 {
-    margin-bottom: 15px;
-    color: #081b33;
+.section-title p{
+max-width:760px;
+margin:auto;
+color:#666;
 }
 
-.standards {
-    background: #f4f6f8;
+/* ================= SERVICES ================= */
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
-.standards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.service-card{
+background:linear-gradient(180deg,#fff 0%,#f8f9fb 100%);
+padding:35px;
+border-radius:14px;
+position:relative;
+overflow:hidden;
+border:1px solid #ececec;
+transition:0.35s;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
-.standard-box {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
+.service-card::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:5px;
+background:#f7931e;
 }
 
-.standard-box h4 {
-    margin-bottom: 15px;
-    color: #081b33;
+.service-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 45px rgba(0,0,0,0.12);
 }
 
-.standard-box ul {
-    padding-left: 20px;
+.service-icon{
+font-size:42px;
+margin-bottom:20px;
 }
 
-.standard-box li {
-    margin-bottom: 10px;
+.service-card h4{
+font-size:22px;
+margin-bottom:15px;
+color:#081b33;
 }
 
-.contact-section {
-    background: #081b33;
-    color: white;
+.service-card p{
+color:#555;
+line-height:1.7;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
+/* ================= FEATURED ================= */
+
+.featured{
+background:#f4f6f8;
+}
+
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.video-card{
+background:white;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 12px 35px rgba(0,0,0,0.08);
+}
+
+.video-card video{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.video-content{
+padding:25px;
+}
+
+.video-content h4{
+margin-bottom:12px;
+font-size:22px;
+color:#081b33;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+background:#081b33;
+color:white;
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
 }
 
 .contact-form input,
 .contact-form textarea,
-.contact-form select {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 4px;
+.contact-form select{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:6px;
+font-family:'Inter',sans-serif;
 }
 
-.contact-form textarea {
-    min-height: 140px;
+.contact-form textarea{
+min-height:140px;
 }
 
-.footer {
-    background: #04101f;
-    color: #cfcfcf;
-    text-align: center;
-    padding: 30px;
-    font-size: 14px;
+/* ================= FOOTER ================= */
+
+.footer{
+background:#04101f;
+color:#d1d1d1;
+padding:30px;
+text-align:center;
+font-size:14px;
 }
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:768px){
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
 
-    .hero h2 {
-        font-size: 42px;
-    }
-
-    nav {
-        text-align: center;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 8px;
-    }
+header{
+padding:20px;
+flex-direction:column;
+gap:15px;
 }
-</style></head><body><header>
-    <div class="logo">
-        <h1>SQRD²</h1>
-        <p>Structural Quality Reliability Design</p>
-    </div><nav>
-    <a href="#">Home</a>
-    <a href="#services">Services</a>
-    <a href="#standards">Standards</a>
-    <a href="#contact">Contact</a>
+
+.hero{
+padding:0 25px;
+}
+
+.hero h2{
+font-size:52px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+nav{
+text-align:center;
+}
+
+nav a{
+margin:8px;
+display:inline-block;
+}
+
+.section{
+padding:70px 25px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<!-- REPLACE WITH YOUR LOGO FILE -->
+<img src="1000023723.png" alt="SQRD2 Logo">
+
+<div class="logo-text">
+<h1>SQRD²</h1>
+<p>STRUCTURAL QUALITY RELIABILITY DESIGN</p>
+</div>
+
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#featured">Projects</a>
+<a href="#contact">Contact</a>
 </nav>
 
-</header><section class="hero">
-    <div class="hero-content"><h2>
-        TEMPORARY WORKS <br>
-        <span class="hero-highlight">DESIGN ENGINEERING</span>
-    </h2>
+</header>
 
-    <p>
-        Specialist Temporary Works design support for UK construction projects.
-        Safe, practical and buildable engineering solutions aligned with BS 5975 and Eurocodes.
-    </p>
+<!-- ================= HERO ================= -->
 
-    <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Request Design Support</a>
-        <a href="#services" class="btn btn-secondary">Our Services</a>
-    </div>
+<section class="hero">
+
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-construction-site-1563744352368?download=1080p" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<div class="hero-badge">
+UK TEMPORARY WORKS ENGINEERING • BS 5975 COMPLIANT
+</div>
+
+<h2>
+TEMPORARY WORKS <br>
+<span class="hero-highlight">DESIGN ENGINEERING</span>
+</h2>
+
+<p>
+Specialist Temporary Works consultancy delivering scaffold,
+formwork, propping and construction-stage engineering solutions
+for UK contractors and construction teams.
+</p>
+
+<div class="stats">
+
+<div class="stat-card">
+<h3>24–72h</h3>
+<span>Fast Turnaround</span>
+</div>
+
+<div class="stat-card">
+<h3>BS 5975</h3>
+<span>UK Standards</span>
+</div>
+
+<div class="stat-card">
+<h3>Remote</h3>
+<span>UK Contractor Support</span>
+</div>
 
 </div>
 
-</section><section class="quick-info">
-    <div class="quick-grid"><div class="quick-card">
-        <h4>BS 5975 Compliant</h4>
-        <p>UK Temporary Works procedures and standards.</p>
-    </div>
+<div class="buttons">
+<a href="#contact" class="btn btn-primary">
+Request Design Support
+</a>
 
-    <div class="quick-card">
-        <h4>Fast Turnaround</h4>
-        <p>24–72 hour engineering response capability.</p>
-    </div>
-
-    <div class="quick-card">
-        <h4>Buildable Designs</h4>
-        <p>Practical site-focused engineering solutions.</p>
-    </div>
-
-    <div class="quick-card">
-        <h4>Remote UK Support</h4>
-        <p>Freelance Temporary Works consultancy services.</p>
-    </div>
+<a href="#services" class="btn btn-secondary">
+Explore Services
+</a>
+</div>
 
 </div>
 
-</section><section class="section" id="services"><div class="section-title">
-    <h3>Core Temporary Works Services</h3>
-    <p>
-        Temporary Works engineering services developed to support contractors,
-        site teams and construction-stage operations.
-    </p>
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="section" id="services">
+
+<div class="section-title">
+<h3>Core Temporary Works Services</h3>
+
+<p>
+Engineering services developed to support contractors,
+site teams and construction-stage operations.
+</p>
 </div>
 
 <div class="services-grid">
 
-    <div class="service-card">
-        <div class="service-icon">🏗️</div>
-        <h4>Scaffold Design & Checks</h4>
-        <p>
-            Scaffold stability verification, access platform checks,
-            loading assessments and working platform solutions.
-        </p>
-    </div>
+<div class="service-card">
+<div class="service-icon">🏗️</div>
+<h4>Scaffold Design & Checks</h4>
+<p>
+Scaffold stability verification,
+access platform checks and loading assessments.
+</p>
+</div>
 
-    <div class="service-card">
-        <div class="service-icon">🧱</div>
-        <h4>Formwork & Falsework</h4>
-        <p>
-            Temporary support systems for slabs, beams, walls and
-            reinforced concrete construction stages.
-        </p>
-    </div>
+<div class="service-card">
+<div class="service-icon">🧱</div>
+<h4>Formwork & Falsework</h4>
+<p>
+Temporary support systems for slabs,
+beams and reinforced concrete construction stages.
+</p>
+</div>
 
-    <div class="service-card">
-        <div class="service-icon">🏢</div>
-        <h4>Propping & Structural Support</h4>
-        <p>
-            Steel propping systems, needling arrangements and temporary
-            structural support for modification works.
-        </p>
-    </div>
+<div class="service-card">
+<div class="service-icon">🏢</div>
+<h4>Propping & Structural Support</h4>
+<p>
+Steel propping systems and temporary structural support engineering solutions.
+</p>
+</div>
 
-    <div class="service-card">
-        <div class="service-icon">🏗</div>
-        <h4>Lifting & Crane Support</h4>
-        <p>
-            Crane base assessments, lifting frames, spreader beams and
-            precast lifting engineering solutions.
-        </p>
-    </div>
+<div class="service-card">
+<div class="service-icon">🏗</div>
+<h4>Lifting & Crane Support</h4>
+<p>
+Crane bases, lifting frames and precast lifting engineering solutions.
+</p>
+</div>
 
-    <div class="service-card">
-        <div class="service-icon">⛏️</div>
-        <h4>Excavation Support Systems</h4>
-        <p>
-            Temporary retaining systems and support solutions for
-            basement and excavation construction works.
-        </p>
-    </div>
+<div class="service-card">
+<div class="service-icon">⛏️</div>
+<h4>Excavation Support Systems</h4>
+<p>
+Temporary retaining systems and support solutions for basement works.
+</p>
+</div>
 
-    <div class="service-card">
-        <div class="service-icon">📐</div>
-        <h4>Temporary Steel Structures</h4>
-        <p>
-            Design of temporary steel frames, support gantries,
-            access systems and construction-stage structures.
-        </p>
-    </div>
+<div class="service-card">
+<div class="service-icon">📐</div>
+<h4>Temporary Steel Structures</h4>
+<p>
+Temporary steel frames, access systems and construction-stage structures.
+</p>
+</div>
 
 </div>
 
-</section><section class="section standards" id="standards"><div class="section-title">
-    <h3>Engineering Standards & Compliance</h3>
-    <p>
-        Designs developed in accordance with recognised UK standards,
-        construction procedures and Temporary Works best practice.
-    </p>
+</section>
+
+<!-- ================= FEATURED ================= -->
+
+<section class="section featured" id="featured">
+
+<div class="section-title">
+<h3>Featured Temporary Works Applications</h3>
+
+<p>
+Engineering support solutions for complex construction-stage operations.
+</p>
 </div>
 
-<div class="standards-grid">
+<div class="video-grid">
 
-    <div class="standard-box">
-        <h4>SQRD² Engineering Approach</h4>
-        <p>
-            SQRD² stands for <strong>Structural Quality Reliability Design</strong>,
-            representing our commitment to safe, practical and reliable engineering solutions.
-        </p>
-    </div>
+<div class="video-card">
 
-    <div class="standard-box">
-        <h4>Applicable Standards</h4>
-        <ul>
-            <li>BS 5975 – Temporary Works Procedures</li>
-            <li>Eurocodes (EN 1990 / 1991 / 1992 / 1993)</li>
-            <li>CDM Regulations Awareness</li>
-            <li>Construction-stage load assessments</li>
-            <li>Industry best practice for buildability</li>
-        </ul>
-    </div>
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-construction-workers-on-site-1579538992258?download=1080p" type="video/mp4">
+</video>
 
-    <div class="standard-box">
-        <h4>Contractor Support</h4>
-        <p>
-            Flexible freelance engineering support for UK contractors,
-            site engineers and Temporary Works Coordinators.
-        </p>
-    </div>
+<div class="video-content">
+<h4>Scaffold & Access Engineering</h4>
+<p>
+Temporary access structures and working platform engineering solutions.
+</p>
+</div>
 
 </div>
 
-</section><section class="section contact-section" id="contact"><div class="section-title">
-    <h3 style="color:white;">Request Temporary Works Design Support</h3>
-    <p style="color:#d9d9d9;">
-        Submit your project requirements and receive a rapid engineering response.
-    </p>
+<div class="video-card">
+
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-construction-workers-pouring-concrete-1579538992258?download=1080p" type="video/mp4">
+</video>
+
+<div class="video-content">
+<h4>Formwork & Concrete Support</h4>
+<p>
+Support systems for reinforced concrete slab,
+beam and wall construction.
+</p>
+</div>
+
+</div>
+
+<div class="video-card">
+
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-engineers-on-a-construction-site-1563744330576?download=1080p" type="video/mp4">
+</video>
+
+<div class="video-content">
+<h4>Site Engineering Coordination</h4>
+<p>
+Fast-track engineering coordination for live construction environments.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="section contact" id="contact">
+
+<div class="section-title">
+
+<h3 style="color:white;">
+Request Temporary Works Design Support
+</h3>
+
+<p style="color:#d9d9d9;">
+Submit your project requirements and receive a rapid engineering response.
+</p>
+
 </div>
 
 <div class="contact-grid">
 
-    <div>
-        <h3>Why Contractors Work With SQRD²</h3>
-        <br>
-        <p>✔ BS 5975 focused engineering support</p>
-        <p>✔ Practical buildable solutions</p>
-        <p>✔ Fast response to urgent site issues</p>
-        <p>✔ Clear sketches and calculation packages</p>
-        <p>✔ Remote support across UK construction projects</p>
-    </div>
+<div>
 
-    <div>
-        <form class="contact-form">
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Company">
-            <input type="email" placeholder="Email Address">
+<h3 style="margin-bottom:20px;">
+Why Contractors Work With SQRD²
+</h3>
 
-            <select>
-                <option>Select Required Service</option>
-                <option>Scaffold Design</option>
-                <option>Formwork / Falsework</option>
-                <option>Propping Design</option>
-                <option>Lifting Design</option>
-                <option>Excavation Support</option>
-            </select>
-
-            <textarea placeholder="Project Details"></textarea>
-
-            <button type="submit" class="btn btn-primary">
-                Submit Request
-            </button>
-        </form>
-    </div>
+<p>✔ BS 5975 focused engineering support</p>
+<p>✔ Practical buildable solutions</p>
+<p>✔ Fast response to urgent site issues</p>
+<p>✔ Clear sketches and calculation packages</p>
+<p>✔ Remote support across UK construction projects</p>
 
 </div>
 
-</section><footer class="footer">
-    © 2026 SQRD² Engineering | Structural Quality Reliability Design | Temporary Works Design Services
-</footer></body>
-</html> 
+<div>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Name">
+
+<input type="text" placeholder="Company">
+
+<input type="email" placeholder="Email Address">
+
+<select>
+<option>Select Required Service</option>
+<option>Scaffold Design</option>
+<option>Formwork / Falsework</option>
+<option>Propping Design</option>
+<option>Lifting Design</option>
+<option>Excavation Support</option>
+</select>
+
+<textarea placeholder="Project Details"></textarea>
+
+<button type="submit" class="btn btn-primary">
+Submit Request
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+© 2026 SQRD² Engineering | Temporary Works Design Services | BS 5975 Compliant
+</footer>
+
+</body>
+</html>
