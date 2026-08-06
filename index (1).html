@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SQRD2 Engineering | Temporary Works Design &amp; CAT 2 Checking</title>
+<meta content="Temporary works design, independent CAT 2 and CAT 3 checking, structural calculations and construction-stage engineering for projects in the UK." name="description"/>
+<meta content="#11161b" name="theme-color"/>
+<meta content="SQRD2 Engineering — Temporary Works Design &amp; Checking" property="og:title"/>
+<meta content="Buildable, independently checked temporary works solutions with clear calculations, drawings and construction controls." property="og:description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#14171A; --bg-panel:#1B1F23; --bg-panel-2:#20262B;
+    --ink:#EDEBE6; --ink-dim:#A6AEB4; --ink-faint:#747C83;
+    --blueprint:#5B8AA6; --blueprint-bright:#8FC1DE;
+    --amber:#D08F3E;
+    --line:rgba(237,235,230,0.10); --line-bright:rgba(237,235,230,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+  section{position:relative; z-index:1;}
+
+  /* NAV */
+  header{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(16,18,21,0.72); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+  nav{display:flex; align-items:center; justify-content:space-between; height:70px; max-width:1200px; margin:0 auto; padding:0 32px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:18px;}
+  .logo .sub{color:var(--ink-dim); font-family:'JetBrains Mono'; font-size:10px; font-weight:400; letter-spacing:0.08em; margin-left:2px;}
+  .navlinks{display:flex; gap:32px; font-size:14px; color:var(--ink-dim);}
+  .navlinks a{transition:color .18s;}
+  .navlinks a:hover{color:var(--ink);}
+  .nav-cta{font-family:'JetBrains Mono'; font-size:12px; padding:9px 16px; border:1px solid var(--blueprint); color:var(--blueprint-bright); transition:background .18s, color .18s; white-space:nowrap;}
+  .nav-cta:hover{background:var(--blueprint); color:#0E1114;}
+  @media (max-width:860px){ .navlinks{display:none;} .wrap{padding:0 20px;} nav{padding:0 20px;} }
+
+  /* HERO VIDEO */
+  .hero{position:relative; height:100vh; min-height:640px; overflow:hidden; display:flex; align-items:flex-end; background:linear-gradient(135deg,#1B1F23,#262E34);}
+  .hero.no-video{background:radial-gradient(ellipse at 30% 20%, #232A30 0%, #14171A 70%);}
+  .hero video, .hero .poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .hero::before{content:''; position:absolute; inset:0; z-index:1;
+    background:
+      linear-gradient(180deg, rgba(14,16,18,0.55) 0%, rgba(14,16,18,0.35) 35%, rgba(14,16,18,0.92) 100%),
+      linear-gradient(90deg, rgba(14,16,18,0.75) 0%, rgba(14,16,18,0.15) 55%);
+  }
+  .hero-content{position:relative; z-index:2; padding:0 0 72px; width:100%;}
+  .eyebrow{font-family:'JetBrains Mono'; font-size:12px; letter-spacing:0.12em; color:var(--amber); text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:''; width:16px; height:1px; background:var(--amber);}
+  .hero h1{font-size:clamp(2.2rem, 5vw, 3.9rem); font-weight:600; line-height:1.06; max-width:16ch; color:#fff;}
+  .hero h1 em{font-style:normal; color:var(--blueprint-bright);}
+  .hero p.lede{margin-top:22px; font-size:17.5px; color:rgba(237,235,230,0.85); max-width:46ch;}
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{font-family:'JetBrains Mono'; font-size:13px; padding:13px 22px; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none; transition:transform .15s, background .15s, border-color .15s, color .15s;}
+  .btn-primary{background:var(--blueprint-bright); color:#0E1114; font-weight:600;}
+  .btn-primary:hover{transform:translateY(-1px); background:#A6D2EA;}
+  .btn-ghost{border:1px solid rgba(237,235,230,0.4); color:#fff; background:rgba(255,255,255,0.04);}
+  .btn-ghost:hover{border-color:var(--blueprint-bright); color:var(--blueprint-bright);}
+  .scroll-cue{position:absolute; right:32px; bottom:32px; z-index:2; font-family:'JetBrains Mono'; font-size:11px; color:rgba(237,235,230,0.65); display:flex; align-items:center; gap:8px; writing-mode:vertical-rl;}
+  @media (max-width:640px){ .scroll-cue{display:none;} }
+
+  /* STANDARDS */
+  .standards{border-bottom:1px solid var(--line); padding:24px 0; background:var(--bg);}
+  .standards-row{display:flex; flex-wrap:wrap; gap:0; align-items:center; justify-content:space-between;}
+  .std-item{font-family:'JetBrains Mono'; font-size:12.5px; color:var(--ink-dim); padding:6px 20px; border-left:1px solid var(--line);}
+  .std-item:first-child{border-left:none; padding-left:0;}
+  .std-item b{color:var(--ink); font-weight:600;}
+  @media (max-width:860px){ .standards-row{gap:12px 0;} .std-item{border-left:none; padding:4px 0; width:50%;} }
+
+  .section-pad{padding:100px 0;}
+  .head-row{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:46px; flex-wrap:wrap;}
+  .head-row h2{font-size:clamp(1.7rem,3vw,2.2rem); font-weight:600;}
+  .head-row p{color:var(--ink-dim); max-width:38ch; font-size:14.5px;}
+  .tag{font-family:'JetBrains Mono'; font-size:12px; color:var(--blueprint-bright); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; display:block;}
+
+  /* SERVICES - photo cards */
+  .svc-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;}
+  @media (max-width:900px){ .svc-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .svc-grid{grid-template-columns:1fr;} }
+  .svc-card{position:relative; height:320px; overflow:hidden; cursor:default; border:1px solid var(--line);}
+  .svc-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease, filter .6s ease; filter:saturate(0.85) brightness(0.75);}
+  .svc-card:hover img{transform:scale(1.06); filter:saturate(1) brightness(0.6);}
+  .svc-card::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,16,18,0.1) 0%, rgba(14,16,18,0.92) 88%);}
+  .svc-inner{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:22px;}
+  .svc-code{font-family:'JetBrains Mono'; font-size:11.5px; color:var(--amber); letter-spacing:0.04em;}
+  .svc-card h3{font-size:18px; font-weight:600; color:#fff; margin-top:8px;}
+  .svc-card p{font-size:13.4px; color:rgba(237,235,230,0.78); margin-top:8px;}
+
+  /* PROCESS */
+  .process-track{display:flex; border:1px solid var(--line-bright); overflow-x:auto;}
+  .proc-step{flex:1; min-width:190px; padding:26px 22px; border-left:1px solid var(--line); position:relative;}
+  .proc-step:first-child{border-left:none;}
+  .proc-step .cat{font-family:'JetBrains Mono'; font-size:26px; font-weight:600; color:var(--blueprint-bright); line-height:1;}
+  .proc-step h4{margin-top:10px; font-size:14.5px; font-weight:600;}
+  .proc-step p{margin-top:8px; font-size:12.8px; color:var(--ink-dim);}
+  .proc-step.gate{background:var(--bg-panel-2);}
+  .proc-step.gate .cat{color:var(--amber); font-size:15px; letter-spacing:0.04em;}
+
+  /* GALLERY */
+  .gallery{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:150px; gap:10px;}
+  .gallery a{grid-column:span 1; grid-row:span 1; overflow:hidden; position:relative; display:block;}
+  .gallery a img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease; filter:saturate(0.9) brightness(0.88);}
+  .gallery a:hover img{transform:scale(1.07); filter:saturate(1) brightness(1);}
+  .gallery a.big{grid-column:span 2; grid-row:span 2;}
+  @media (max-width:760px){
+    .gallery{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+    .gallery a.big{grid-column:span 2; grid-row:span 1;}
+  }
+
+  /* PLATFORM */
+  .platform{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:900px){ .platform{grid-template-columns:1fr;} }
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); margin-top:28px; border:1px solid var(--line);}
+  .stat{background:var(--bg-panel); padding:20px;}
+  .stat b{display:block; font-family:'JetBrains Mono'; font-size:24px; color:var(--blueprint-bright); font-weight:600;}
+  .stat span{font-size:12px; color:var(--ink-dim);}
+  .platform-photo{position:relative; height:420px; overflow:hidden; border:1px solid var(--line-bright);}
+  .platform-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(0.9) brightness(0.85);}
+  .platform-photo::after{content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(14,16,18,0.85), transparent 55%);}
+  .platform-badge{position:absolute; left:18px; bottom:18px; z-index:2; font-family:'JetBrains Mono'; font-size:11px; color:#fff; background:rgba(20,23,26,0.7); border:1px solid var(--line-bright); padding:8px 12px;}
+
+  /* CTA */
+  .cta-band{position:relative; padding:110px 0; text-align:left; overflow:hidden;}
+  .cta-band img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(0.7) brightness(0.4);}
+  .cta-band .overlay{position:absolute; inset:0; background:linear-gradient(90deg, rgba(14,16,18,0.95) 0%, rgba(14,16,18,0.65) 70%);}
+  .cta-band .wrap{position:relative; z-index:2;}
+  .cta-band h2{font-size:clamp(1.7rem,3.4vw,2.5rem); max-width:16ch; font-weight:600; color:#fff;}
+  .cta-band .row{display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-top:24px;}
+  .cta-band p{color:rgba(237,235,230,0.8); max-width:40ch; font-size:14.5px;}
+
+  footer{border-top:1px solid var(--line); padding:40px 0; font-size:12.5px; color:var(--ink-faint); background:var(--bg);}
+  .foot-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+  .foot-row .mono{color:var(--ink-dim);}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* PROFESSIONAL ENHANCEMENTS */
+  body{background:
+    radial-gradient(circle at 12% 8%,rgba(91,138,166,.09),transparent 30rem),
+    var(--bg);}
+  header.scrolled{background:rgba(12,15,18,.94);box-shadow:0 12px 35px rgba(0,0,0,.22)}
+  .logo img{filter:drop-shadow(0 3px 10px rgba(0,0,0,.24))}
+  .hero{min-height:720px}
+  .hero-content{padding-bottom:88px}
+  .hero h1{max-width:14ch;font-size:clamp(2.8rem,6vw,5.3rem);letter-spacing:-.045em}
+  .hero p.lede{font-size:18px;max-width:58ch;line-height:1.75}
+  .hero-proof{display:flex;gap:24px;flex-wrap:wrap;margin-top:30px;color:rgba(237,235,230,.78);font-size:12px;font-family:'JetBrains Mono'}
+  .hero-proof span{display:flex;align-items:center;gap:8px}
+  .hero-proof span:before{content:'✓';color:var(--blueprint-bright)}
+  .trust-panel{margin-top:-34px;position:relative;z-index:5}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(27,31,35,.96);border:1px solid var(--line-bright);box-shadow:0 24px 60px rgba(0,0,0,.25)}
+  .trust-item{padding:24px;border-left:1px solid var(--line)}
+  .trust-item:first-child{border-left:0}
+  .trust-item b{display:block;font-family:'Space Grotesk';font-size:17px;color:#fff}
+  .trust-item span{display:block;margin-top:6px;font-size:12.5px;color:var(--ink-dim)}
+  .svc-card{border-radius:2px;box-shadow:0 18px 40px rgba(0,0,0,.14)}
+  .svc-card:before{content:'VIEW SCOPE';position:absolute;top:18px;right:18px;z-index:3;font:10px 'JetBrains Mono';letter-spacing:.08em;color:#fff;border:1px solid rgba(255,255,255,.32);padding:6px 8px;opacity:0;transform:translateY(-5px);transition:.25s}
+  .svc-card:hover:before{opacity:1;transform:none}
+  .process-track{background:var(--bg-panel);box-shadow:0 16px 45px rgba(0,0,0,.13)}
+  .proc-step{transition:background .2s,transform .2s}
+  .proc-step:hover{background:#242b31;transform:translateY(-2px)}
+  .capabilities{display:grid;grid-template-columns:1.05fr 1.95fr;gap:50px;align-items:start}
+  .cap-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cap{padding:18px;border:1px solid var(--line);background:var(--bg-panel);min-height:112px}
+  .cap b{font-family:'Space Grotesk';font-size:15px;color:#fff}
+  .cap p{font-size:12.5px;color:var(--ink-dim);margin-top:7px}
+  .contact-card{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:end}
+  .contact-meta{display:grid;gap:10px;font-family:'JetBrains Mono';font-size:12px;color:rgba(237,235,230,.72)}
+  .contact-meta span{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .mobile-toggle{display:none;background:none;border:1px solid var(--line-bright);color:#fff;padding:8px 10px;font-family:'JetBrains Mono'}
+  .mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:#11161b;border-bottom:1px solid var(--line);padding:18px 20px;z-index:99}
+  .mobile-menu.open{display:grid;gap:14px}
+  .mobile-menu a{font-size:14px;color:var(--ink-dim);text-decoration:none;padding:8px 0}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--blueprint-bright);outline-offset:3px}
+  @media(max-width:900px){.trust-grid{grid-template-columns:1fr 1fr}.trust-item:nth-child(3){border-left:0;border-top:1px solid var(--line)}.trust-item:nth-child(4){border-top:1px solid var(--line)}.capabilities{grid-template-columns:1fr}.contact-card{grid-template-columns:1fr}.mobile-toggle{display:block}.nav-cta{display:none}}
+  @media(max-width:600px){.hero{min-height:680px}.hero-content{padding-bottom:68px}.hero-proof{gap:10px 18px}.trust-panel{margin-top:0}.trust-grid{grid-template-columns:1fr}.trust-item{border-left:0!important;border-top:1px solid var(--line)}.trust-item:first-child{border-top:0}.cap-list{grid-template-columns:1fr}.section-pad{padding:76px 0}}
+
+
+  .svc-card img[src^="data:image/svg+xml"], .gallery img[src^="data:image/svg+xml"], .platform-photo img[src^="data:image/svg+xml"], .cta-band img[src^="data:image/svg+xml"]{image-rendering:auto; background:#182027;}
+
+.photo-note{padding:18px 32px;font-size:11px;color:var(--ink-faint);border-top:1px solid var(--line);background:var(--bg);}
+@media(max-width:640px){.photo-note{padding:16px 20px;}}
+
+/* consultancy upgrade */
+.logo img{width:42px;height:42px;object-fit:contain}.logo-copy{display:flex;flex-direction:column;line-height:1.05}.logo-copy strong{font-size:17px}.logo-copy span{font:10px 'JetBrains Mono';letter-spacing:.12em;color:var(--ink-dim);margin-top:5px}.hero{min-height:760px;align-items:center}.hero-content{padding:150px 0 90px}.hero h1{max-width:18ch;font-size:clamp(2.7rem,5.7vw,5rem)}.hero p.lede{font-size:18px;max-width:58ch}.hero-kicker{display:inline-flex;gap:9px;align-items:center;padding:8px 11px;border:1px solid rgba(255,255,255,.18);background:rgba(9,13,17,.42);font:11px 'JetBrains Mono';letter-spacing:.08em;color:#dbe8ef;margin-bottom:22px}.hero-kicker i{width:7px;height:7px;background:var(--amber);border-radius:50%}.hero-proof{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px}.proof-pill{padding:9px 12px;border:1px solid rgba(255,255,255,.16);background:rgba(10,15,20,.45);font:11px 'JetBrains Mono';color:#dce5ea}.cred-strip{background:#e9edf0;color:#18212a}.cred-grid{display:grid;grid-template-columns:repeat(4,1fr)}.cred{padding:30px 26px;border-left:1px solid #ccd4d9}.cred:first-child{border-left:0}.cred b{display:block;font:700 30px 'Space Grotesk';color:#0f2532}.cred span{font-size:13px;color:#58656d}.intro-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px}.intro-copy h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.08}.intro-copy p{margin-top:22px;color:var(--ink-dim)}.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.why-card,.service-group{padding:24px;border:1px solid var(--line);background:var(--bg-panel)}.why-card b{font-family:'Space Grotesk'}.why-card p{font-size:13px;color:var(--ink-dim);margin-top:8px}.service-groups{display:grid;grid-template-columns:1fr 1fr;gap:18px}.service-group{padding:30px;border-left:3px solid var(--blueprint)}.service-group .num,.market-label,.project-meta{font:11px 'JetBrains Mono';color:var(--amber);letter-spacing:.1em}.service-group h3{font-size:22px;margin-top:10px}.service-group ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 20px;margin-top:18px}.service-group li{font-size:13px;color:var(--ink-dim)}.service-group li:before{content:'— ';color:var(--blueprint-bright)}.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.market-card{min-height:400px;padding:34px;position:relative;overflow:hidden;border:1px solid var(--line-bright)}.market-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.27) saturate(.75)}.market-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(10,15,20,.9))}.market-content{position:relative;z-index:2;display:flex;flex-direction:column;height:100%}.market-card h3{font-size:30px;margin-top:14px}.market-card p{color:#ccd5da;margin-top:12px}.market-list{margin-top:auto;padding-top:24px;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px}.market-list li{font-size:12px;border-top:1px solid rgba(255,255,255,.15);padding-top:8px}.sector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.sector{min-height:110px;padding:20px;border:1px solid var(--line);background:#171d23;display:flex;align-items:flex-end;font:600 14px 'Space Grotesk'}.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.project{border:1px solid var(--line);background:#171d23;overflow:hidden}.project img{width:100%;height:230px;object-fit:cover;filter:brightness(.8)}.project-body{padding:24px}.project h3{font-size:20px;margin-top:10px}.project p{font-size:13px;color:var(--ink-dim);margin-top:10px}.project small{display:block;margin-top:18px;padding-top:13px;border-top:1px solid var(--line);color:#ccd5da}.quote-panel{display:grid;grid-template-columns:1fr .9fr;gap:50px;background:#e9edf0;color:#17212a;padding:58px}.quote-panel h2{font-size:clamp(2rem,4vw,3rem);line-height:1.08}.quote-panel p{color:#53616a;margin-top:18px}.quote-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn-dark{background:#17212a;color:#fff}.btn-outline-dark{border:1px solid #7f8b92;color:#17212a}.quote-steps{display:grid;gap:10px}.quote-step{background:#fff;padding:17px;display:flex;gap:14px}.quote-step b{font:12px 'JetBrains Mono';color:#9a6528}.quote-step span{font-size:13px;color:#46525a}.region-badge{font:11px 'JetBrains Mono';color:var(--blueprint-bright)}@media(max-width:980px){.cred-grid{grid-template-columns:1fr 1fr}.intro-grid,.quote-panel,.market-grid,.service-groups{grid-template-columns:1fr}.sector-grid{grid-template-columns:repeat(3,1fr)}.projects-grid{grid-template-columns:1fr 1fr}}@media(max-width:650px){.cred-grid,.why-grid,.projects-grid{grid-template-columns:1fr}.cred{border-left:0;border-top:1px solid #ccd4d9}.service-group ul,.market-list{grid-template-columns:1fr}.sector-grid{grid-template-columns:1fr 1fr}.quote-panel{padding:34px 22px}}
+
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:saturate(.82) contrast(1.08)}
+.hero .poster{z-index:-1}.hero:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,12,17,.88) 0%,rgba(7,12,17,.64) 47%,rgba(7,12,17,.32) 100%);pointer-events:none}.hero::before{z-index:1}.hero-content{z-index:3}
+.service-visual-head{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:end;margin:72px 0 24px;padding-top:42px;border-top:1px solid var(--line)}
+.service-visual-head h3{font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.08;margin-top:12px}.service-visual-head p{color:var(--ink-dim);font-size:14px}
+.service-visual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.service-visual{position:relative;min-height:390px;overflow:hidden;border:1px solid var(--line-bright);background:#111820}.service-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.82);transition:transform .65s ease,filter .65s ease}.service-visual:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,13,18,.05) 15%,rgba(8,13,18,.95) 100%)}.service-visual:hover img{transform:scale(1.045);filter:brightness(.72) saturate(.95)}.service-visual-body{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:28px}.service-visual-body span{font:10px 'JetBrains Mono';letter-spacing:.12em;color:var(--amber)}.service-visual-body h3{font-size:22px;color:#fff;margin-top:8px}.service-visual-body p{font-size:13px;color:#cbd4d9;margin-top:9px;max-width:48ch}
+.market-card>img,.project img{transition:transform .65s ease}.market-card:hover>img,.project:hover img{transform:scale(1.035)}
+@media(max-width:820px){.service-visual-grid,.service-visual-head{grid-template-columns:1fr}.service-visual{min-height:340px}.hero video{object-position:center center}}
+@media(prefers-reduced-motion:reduce){.service-visual img,.market-card>img,.project img{transition:none}}
+
+/* Final image policy: structure-focused photography with graceful fallback */
+.service-visual img,.market-card>img,.project img{background:linear-gradient(135deg,#1a242d,#35434f);object-position:center}
+.service-visual img.image-failed,.market-card>img.image-failed,.project img.image-failed{opacity:.18}
+.image-policy{display:flex;gap:10px;align-items:center;margin-top:18px;font:500 11px/1.5 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#89939d}
+.image-policy:before{content:"";width:28px;height:1px;background:#d69a4a}
+
+/* Final brand visibility refinement */
+header{background:rgba(10,14,18,.88);}
+nav{height:86px;}
+.logo{gap:14px;text-decoration:none!important;position:relative;padding:8px 0;}
+.logo:after{content:"";position:absolute;left:70px;bottom:2px;width:46px;height:2px;background:var(--amber);opacity:.95;}
+.logo img{width:58px!important;height:58px!important;object-fit:contain;filter:drop-shadow(0 5px 16px rgba(0,0,0,.38)) brightness(1.08);}
+.logo-copy{line-height:1!important;}
+.logo-copy strong{font-size:20px!important;font-weight:700;letter-spacing:.01em;color:#fff;text-decoration:none!important;}
+.logo-copy span{font-size:9px!important;letter-spacing:.16em!important;color:#b8c2c9!important;margin-top:7px!important;text-decoration:none!important;}
+.logo,.logo strong,.logo span,.navlinks a,.nav-cta{text-decoration:none!important;}
+.mobile-menu{top:86px;}
+@media(max-width:640px){
+  nav{height:76px;}
+  .logo img{width:48px!important;height:48px!important;}
+  .logo-copy strong{font-size:16px!important;}
+  .logo-copy span{font-size:7.5px!important;letter-spacing:.12em!important;}
+  .logo:after{left:60px;width:34px;}
+  .mobile-menu{top:76px;}
+}
+
+
+/* PRICING SECTION */
+.pricing-intro{max-width:70ch;margin-bottom:36px;}
+.pricing-intro p{color:var(--ink-dim);margin-top:14px;font-size:15px;}
+.diagram-frame{border:1px solid var(--line-bright);background:var(--bg-panel);border-radius:2px;padding:26px 22px 18px;position:relative;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.18);margin-bottom:46px;}
+.diagram-frame .corner-label{position:absolute;top:12px;left:20px;font-family:'JetBrains Mono';font-size:10.5px;color:var(--ink-faint);letter-spacing:0.08em;}
+.diagram-svg{width:100%;height:auto;display:block;margin-top:10px;}
+.callout-line{stroke:var(--ink-faint);stroke-width:1;}
+.callout-dot{fill:var(--amber);}
+.callout-text{font-family:'JetBrains Mono';font-size:12px;fill:var(--ink);}
+.callout-label{font-family:'JetBrains Mono';font-size:11px;fill:var(--blueprint-bright);font-weight:600;}
+.structure-fill{fill:var(--bg-panel-2);stroke:var(--ink-faint);stroke-width:1.2;}
+.ground-fill{fill:#0d1217;}
+.hatch{stroke:var(--line);stroke-width:1;}
+
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line-bright);}
+.pkg{background:var(--bg-panel);padding:30px 24px;position:relative;}
+.pkg-ref{font-family:'JetBrains Mono';font-size:11px;color:var(--ink-faint);margin-bottom:14px;letter-spacing:0.06em;}
+.pkg-name{font-family:'Space Grotesk';font-size:20px;font-weight:600;margin-bottom:6px;color:#fff;}
+.pkg-desc{color:var(--ink-dim);font-size:13.5px;margin-bottom:22px;min-height:54px;}
+.pkg-price{font-family:'JetBrains Mono';font-size:27px;font-weight:600;color:var(--amber);}
+.pkg-price span{font-size:12px;color:var(--ink-faint);font-weight:400;}
+.pkg-list{list-style:none;margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+.pkg-list li{font-size:13px;color:var(--ink-dim);padding:5px 0;display:flex;gap:8px;align-items:flex-start;}
+.pkg-list li::before{content:'—';color:var(--blueprint-bright);flex-shrink:0;}
+.pkg.featured{background:var(--bg-panel-2);}
+.pkg.featured .pkg-ref{color:var(--amber);}
+.pkg-tag{position:absolute;top:24px;right:24px;font-family:'JetBrains Mono';font-size:9.5px;letter-spacing:0.08em;color:var(--amber);border:1px solid rgba(208,143,62,0.4);padding:3px 8px;border-radius:2px;}
+@media(max-width:900px){.pkg-grid{grid-template-columns:1fr;}}
+
+.process-mini{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line-bright);background:var(--bg-panel);box-shadow:0 16px 40px rgba(0,0,0,.13);margin-top:40px;}
+.process-mini .step{padding:24px 20px;border-left:1px solid var(--line);}
+.process-mini .step:first-child{border-left:none;}
+.process-mini .cat{font-family:'JetBrains Mono';font-size:22px;font-weight:600;color:var(--blueprint-bright);}
+.process-mini h4{margin-top:8px;font-size:14px;font-weight:600;}
+.process-mini p{margin-top:6px;font-size:12.5px;color:var(--ink-dim);}
+@media(max-width:760px){.process-mini{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.process-mini{grid-template-columns:1fr;}}
+
+
+  /* ===== LIVE TOOL DEMO (added) ===== */
+  .tool-frame{border:1px solid var(--line-bright); background:var(--bg-panel); margin-top:8px;}
+  .tool-bar{display:flex; align-items:center; gap:14px; padding:10px 14px; border-bottom:1px solid var(--line); background:var(--bg-panel-2);}
+  .tool-dots{display:flex; gap:6px;}
+  .tool-dots i{width:9px; height:9px; border-radius:50%; display:block;}
+  .tool-dots i:nth-child(1){background:#e0685c;} .tool-dots i:nth-child(2){background:#e3b341;} .tool-dots i:nth-child(3){background:#59b869;}
+  .tool-url{flex:1; font:11px 'JetBrains Mono'; color:var(--ink-dim); background:rgba(255,255,255,0.04); padding:6px 10px; border-radius:3px;}
+  .tool-live{font:10.5px 'JetBrains Mono'; color:#7CE38B; display:flex; align-items:center; gap:6px; white-space:nowrap;}
+  .tool-live i{width:6px; height:6px; border-radius:50%; background:#7CE38B; display:block;}
+  .tool-frame iframe{display:block; width:100%; height:640px; border:none;}
+  .tool-mobile{display:none; position:relative;}
+  .tool-mobile img{width:100%; display:block;}
+  .tool-mobile .open-tag{display:block; text-align:center; padding:13px; background:var(--blueprint-bright); color:#0E1114; font:600 14px 'IBM Plex Sans', sans-serif;}
+  @media (max-width:760px){ .tool-desktop{display:none !important;} .tool-mobile{display:block !important;} }
+  .tool-highlights{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:20px;}
+  @media (max-width:980px){ .tool-highlights{grid-template-columns:1fr;} }
+  .tool-note{margin-top:16px; font-size:12.5px; color:var(--ink-faint);}
+</style>
+</head>
+<body><header><nav><a class="logo" href="#top"><img alt="SQRD2 Engineering logo" src="site-image-1.png" /><span class="logo-copy"><strong>SQRD2 Engineering</strong><span>TEMPORARY WORKS CONSULTANCY</span></span></a><div class="navlinks"><a href="#live-tool">Live tool</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#markets">Coverage</a><a href="#sectors">Sectors</a><a href="#projects">Experience</a><a href="#process">Process</a></div><a class="nav-cta" href="#contact">REQUEST A QUOTATION</a><button aria-expanded="false" class="mobile-toggle">MENU</button></nav><div class="mobile-menu" id="mobileMenu"><a href="#live-tool">Live tool</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#markets">Coverage</a><a href="#sectors">Sectors</a><a href="#projects">Experience</a><a href="#process">Process</a><a href="#contact">Request a quotation</a></div></header><main id="top">
+<section class="hero"><video aria-hidden="true" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="hero-video.mp4" type="video/mp4"/></video><img alt="Temporary works construction project" class="poster" src="https://static.wixstatic.com/media/18ec40_22ba598ab26b48ebbe7a4525bdc7c61d~mv2.jpeg/v1/fill/w_1200,h_680,al_c,q_85/18ec40_22ba598ab26b48ebbe7a4525bdc7c61d~mv2.jpeg"/><div class="wrap hero-content"><div class="hero-kicker"><i></i> UK · REMOTE DELIVERY</div><h1>Specialist temporary works <em>design &amp; independent checking.</em></h1><p class="lede">Buildable temporary works solutions, CAT 2 and CAT 3 independent checks, and construction-stage engineering for contractors across the UK.</p><div class="hero-ctas"><a class="btn btn-primary" href="#contact">Request a quotation →</a><a class="btn btn-ghost" href="#services">Explore capabilities</a></div><div class="hero-proof"><span class="proof-pill">BS 5975</span><span class="proof-pill">EUROCODES</span><span class="proof-pill">BUILDABLE SOLUTIONS</span><span class="proof-pill">CLEAR DESIGN CONTROL</span></div></div></section>
+<section class="cred-strip"><div class="wrap cred-grid"><div class="cred"><b>10+ years</b><span>Temporary works and structural engineering experience</span></div><div class="cred"><b>CAT 2 / 3</b><span>Independent checking and comment resolution</span></div><div class="cred"><b>UK-wide</b><span>Site and office coverage</span></div><div class="cred"><b>24–48 h</b><span>Typical response for scope and fee proposal</span></div></div></section>
+<section class="section-pad"><div class="wrap intro-grid"><div class="intro-copy reveal"><span class="tag">Why SQRD2</span><h2>Clear, buildable and auditable engineering decisions.</h2><p>SQRD2 supports contractors, designers and Temporary Works Coordinators from design brief through calculation, independent check, construction sequence and controlled issue.</p></div><div class="why-grid reveal"><div class="why-card"><b>Independent technical judgement</b><p>Load path, stability, assumptions, interfaces and construction-stage risks.</p></div><div class="why-card"><b>Construction-led solutions</b><p>Access, installation, sequencing, inspection and safe removal considered.</p></div><div class="why-card"><b>Direct engineer communication</b><p>Focused responses between the site team and designer.</p></div><div class="why-card"><b>Controlled deliverables</b><p>Calculations, drawings, hold points and residual-risk notes.</p></div></div></div></section>
+<section class="section-pad" id="live-tool"><div class="wrap">
+<div class="head-row reveal"><div><span class="tag">Live calculation</span><h2>Watch a working platform design calculate, live.</h2><p>The same formula-driven tool used on real projects. Change an input and every check updates immediately &#8212; no macros, no static drawings.</p></div></div>
+
+<div class="tool-frame reveal">
+<div class="tool-bar"><div class="tool-dots"><i></i><i></i><i></i></div><div class="tool-url">sqrd2buildingdesignsolution.ltd/tools/tw-001-working-platform</div><div class="tool-live tool-desktop"><i></i>LIVE</div></div>
+<iframe class="tool-desktop" src="tw001-dashboard.html" title="TW-001 Working Platform live design tool"></iframe>
+<a class="tool-mobile" href="tw001-dashboard.html" target="_blank" rel="noopener"><img src="tw001-preview.png" alt="TW-001 Working Platform live design tool"/><span class="open-tag">Open the live tool &#8599;</span></a>
+</div>
+
+<div class="tool-highlights">
+<div class="why-card"><b>Live geometry, not artwork</b><p>Plan view, section, load dispersion and bearing pressure redraw from the same numbers shown beside them.</p></div>
+<div class="why-card"><b>Full calculation trace</b><p>Qd, contact pressure, dispersed pressure, settlement &#8212; every intermediate value visible, not just a pass/fail flag.</p></div>
+<div class="why-card"><b>Real outputs</b><p>Generates an actual design report, calculation report, certificate and inspection checklist from the live inputs.</p></div>
+</div>
+
+<div class="tool-note">Development preview &#8212; a screening design aid, not an issued design or working-platform certificate.</div>
+</div></section>
+<section class="section-pad" id="services" style="background:#0d1217"><div class="wrap"><div class="head-row reveal"><div><span class="tag">Specialist capabilities</span><h2>Services organised around construction need.</h2></div></div><div class="service-groups"><div class="service-group reveal"><span class="num">01 / GROUND &amp; EXCAVATION</span><h3>Excavation and ground support</h3><ul><li>Underpinning</li><li>Sheet piles</li><li>King-post walls</li><li>Trench support</li><li>Retaining systems</li><li>Working platforms</li></ul></div><div class="service-group reveal"><span class="num">02 / CONCRETE CONSTRUCTION</span><h3>Formwork, falsework and propping</h3><ul><li>Formwork pressure</li><li>Falsework design</li><li>Backpropping</li><li>Temporary slab checks</li><li>Concrete pour checks</li><li>Strike stages</li></ul></div><div class="service-group reveal"><span class="num">03 / STEEL &amp; PRECAST</span><h3>Erection and temporary stability</h3><ul><li>Steel-frame stability</li><li>Erection bracing</li><li>Precast panels</li><li>Column restraint</li><li>Temporary connections</li><li>Lifting interfaces</li></ul></div><div class="service-group reveal"><span class="num">04 / ASSURANCE</span><h3>Independent checking and TWC support</h3><ul><li>CAT 1 / 2 / 3 checks</li><li>Design brief review</li><li>Discrepancy schedules</li><li>Site-change review</li><li>Hold points</li><li>Design risk review</li></ul></div></div>
+<div class="service-visual-head reveal">
+<div><span class="tag">Temporary works elements</span><h3>Engineering services shown with the correct construction activity.</h3></div>
+<p>Each image represents the temporary works element described. Replace representative images with approved SQRD2 project photography when available.</p>
+</div>
+<div class="service-visual-grid">
+<article class="service-visual reveal"><img alt="Sheet pile excavation support installation" loading="lazy" src="https://static.wixstatic.com/media/18ec40_22ba598ab26b48ebbe7a4525bdc7c61d~mv2.jpeg/v1/fill/w_1200,h_680,al_c,q_85/18ec40_22ba598ab26b48ebbe7a4525bdc7c61d~mv2.jpeg"/><div class="service-visual-body"><span>GROUND SUPPORT</span><h3>Sheet piles &amp; excavation support</h3><p>Retaining systems, walers, struts, anchors, staged excavation and stability checks.</p></div></article>
+<article class="service-visual reveal"><img alt="Underpinning and local excavation support works" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/681827a3a56a92682a55d476/1746413476612-6YK5EQWAQ6EFSUIY7MDQ/Bespoke%2BSolutions.jpg"/><div class="service-visual-body"><span>EXISTING STRUCTURES</span><h3>Underpinning &amp; structural support</h3><p>Sequenced pins, needles, local propping, load transfer and party-wall constraints.</p></div></article>
+<article class="service-visual reveal"><img alt="Temporary steel propping to a structural opening" loading="lazy" src="https://publicassets.mabeyhire.co.uk/publicwebsiteassets/2025/10/Backpropping_1_584x463.png"/><div class="service-visual-body"><span>PROPPING</span><h3>Temporary propping &amp; backpropping</h3><p>Proprietary prop systems, load transfer, backpropping layouts, reactions and controlled release sequences.</p></div></article>
+<article class="service-visual reveal"><img alt="Concrete formwork and falsework construction system" loading="lazy" src="https://blog.schaltec.de/hs-fs/hubfs/2023-09-06-baustelle-reisch-sigmaringen-schaltec-gmbh-67.jpg?height=853&name=2023-09-06-baustelle-reisch-sigmaringen-schaltec-gmbh-67.jpg&width=1280"/><div class="service-visual-body"><span>CONCRETE WORKS</span><h3>Formwork, falsework &amp; backpropping</h3><p>Wet-concrete pressure, support reactions, pour stages, striking and residual slab capacity.</p></div></article>
+<article class="service-visual reveal"><img alt="Access scaffold on an active construction site" loading="lazy" src="https://images.pexels.com/photos/12335028/pexels-photo-12335028.jpeg?auto=compress&cs=tinysrgb&w=1200"/><div class="service-visual-body"><span>ACCESS &amp; EDGE PROTECTION</span><h3>Scaffold &amp; access structures</h3><p>Stability, ties, buttresses, loading bays, foundations and site-specific modifications.</p></div></article>
+<article class="service-visual reveal"><img alt="Crane lifting operation on a construction project" loading="lazy" src="https://images.pexels.com/photos/14169558/pexels-photo-14169558.jpeg?auto=compress&cs=tinysrgb&w=1200"/><div class="service-visual-body"><span>LIFTING &amp; PLATFORMS</span><h3>Crane mats &amp; working platforms</h3><p>Outrigger and track reactions, load spread, bearing verification and temporary access-platform design.</p></div></article>
+<article class="service-visual reveal"><img alt="Steel frame under erection with temporary stability requirements" loading="lazy" src="https://images.pexels.com/photos/14213937/pexels-photo-14213937.jpeg?auto=compress&cs=tinysrgb&w=1200"/><div class="service-visual-body"><span>ERECTION ENGINEERING</span><h3>Steel erection &amp; temporary bracing</h3><p>Frame stability, temporary raking props, erection-stage reactions, sequence effects and holding points.</p></div></article>
+<article class="service-visual reveal"><img alt="Temporary bracing supporting structural elements during construction" loading="lazy" src="https://images.pexels.com/photos/5505125/pexels-photo-5505125.jpeg?auto=compress&cs=tinysrgb&w=1200"/><div class="service-visual-body"><span>PRECAST &amp; TEMPORARY STABILITY</span><h3>Precast panels, beams &amp; columns</h3><p>Temporary bracing, erection loads, rotation, uplift, column shoes and connection checks.</p></div></article>
+</div></div></section>
+<section class="section-pad" id="pricing" style="background:#0d1217"><div class="wrap">
+  <div class="head-row reveal"><div class="pricing-intro"><span class="tag">Fixed-fee packages</span><h2>CAT 2 design &amp; checking, priced per scheme.</h2><p>No open-ended quotes. Every package is priced before work starts, to BS 5975:2019, the Eurocodes and CIRIA guidance — so you know the number before you commit.</p></div></div>
+
+  <div class="diagram-frame reveal">
+    <div class="corner-label">FIG. 01 — TYPICAL SCOPE OF A CAT 2 EXCAVATION SUPPORT PACKAGE</div>
+    <svg class="diagram-svg" viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="180" width="800" height="160" class="ground-fill"/>
+      <line x1="0" y1="180" x2="800" y2="180" class="hatch"/>
+      <rect x="300" y="180" width="200" height="120" fill="var(--bg)"/>
+      <rect x="292" y="140" width="10" height="170" class="structure-fill"/>
+      <rect x="498" y="140" width="10" height="170" class="structure-fill"/>
+      <rect x="292" y="205" width="216" height="8" class="structure-fill"/>
+      <rect x="150" y="90" width="140" height="90" class="structure-fill"/>
+      <rect x="510" y="90" width="140" height="90" class="structure-fill"/>
+      <rect x="260" y="150" width="280" height="10" fill="var(--bg-panel-2)" stroke="var(--amber)" stroke-width="1.2"/>
+
+      <circle cx="220" cy="130" r="3" class="callout-dot"/>
+      <line x1="220" y1="130" x2="140" y2="60" class="callout-line"/>
+      <text x="30" y="45" class="callout-text">Existing structure</text>
+      <text x="30" y="60" class="callout-label">assessment</text>
+
+      <circle cx="297" cy="220" r="3" class="callout-dot"/>
+      <line x1="297" y1="220" x2="297" y2="270" class="callout-line"/>
+      <text x="255" y="290" class="callout-text">Sheet pile support</text>
+      <text x="255" y="305" class="callout-label">design to EC7</text>
+
+      <circle cx="400" cy="155" r="3" class="callout-dot"/>
+      <line x1="400" y1="155" x2="400" y2="40" class="callout-line"/>
+      <text x="330" y="25" class="callout-text">Needle beam &amp;</text>
+      <text x="330" y="40" class="callout-label">pin bay sequence</text>
+
+      <circle cx="503" cy="209" r="3" class="callout-dot"/>
+      <line x1="503" y1="209" x2="600" y2="230" class="callout-line"/>
+      <text x="605" y="225" class="callout-text">Waling &amp; prop</text>
+      <text x="605" y="240" class="callout-label">verification</text>
+
+      <circle cx="580" cy="130" r="3" class="callout-dot"/>
+      <line x1="580" y1="130" x2="680" y2="80" class="callout-line"/>
+      <text x="600" y="65" class="callout-text">CAT 2 drawing</text>
+      <text x="600" y="80" class="callout-label">set, ready for site</text>
+    </svg>
+  </div>
+
+  <div class="pkg-grid">
+    <div class="pkg reveal">
+      <div class="pkg-ref">PKG.01 — SINGLE ELEMENT</div>
+      <div class="pkg-name">Core Check</div>
+      <div class="pkg-desc">CAT 2 check of one temporary works element already designed in principle.</div>
+      <div class="pkg-price">£800 <span>/ scheme</span></div>
+      <ul class="pkg-list">
+        <li>One structural element (e.g. one sheet pile run, one prop scheme)</li>
+        <li>Calculation check to BS 5975 / relevant Eurocode</li>
+        <li>Marked-up comments, no redesign</li>
+        <li>1 revision round</li>
+      </ul>
+    </div>
+
+    <div class="pkg featured reveal">
+      <span class="pkg-tag">MOST BOOKED</span>
+      <div class="pkg-ref">PKG.02 — FULL SCHEME</div>
+      <div class="pkg-name">Design Package</div>
+      <div class="pkg-desc">Full CAT 2 design and drawing set for one defined temporary works scheme.</div>
+      <div class="pkg-price">£1,600 <span>/ scheme</span></div>
+      <ul class="pkg-list">
+        <li>Excavation support or formwork/propping design</li>
+        <li>Full calculation pack, code-referenced</li>
+        <li>Construction drawing set, up to 4 sheets</li>
+        <li>1 revision round</li>
+      </ul>
+    </div>
+
+    <div class="pkg reveal">
+      <div class="pkg-ref">PKG.03 — MULTI-STAGE</div>
+      <div class="pkg-name">Sequenced Scheme</div>
+      <div class="pkg-desc">Multi-stage sequencing (e.g. pin bay underpinning) with stage-by-stage stability checks.</div>
+      <div class="pkg-price">from £2,400 <span>/ scheme</span></div>
+      <ul class="pkg-list">
+        <li>Full calculation pack across all stages</li>
+        <li>Drawing set, up to 8 sheets</li>
+        <li>Sequencing methodology notes</li>
+        <li>2 revision rounds</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="process-mini reveal">
+    <div class="step"><div class="cat">01</div><h4>Send scope</h4><p>Drawings, ground conditions and loading — whatever you have.</p></div>
+    <div class="step"><div class="cat">02</div><h4>Fixed quote</h4><p>Package confirmed within 24–48h, price fixed before work starts.</p></div>
+    <div class="step"><div class="cat">03</div><h4>Design or check</h4><p>Calculations and drawings produced to BS 5975 / Eurocodes.</p></div>
+    <div class="step"><div class="cat">04</div><h4>Delivered</h4><p>CAT 2 pack issued, ready for site — one revision round included.</p></div>
+  </div>
+
+</div></section>
+<section class="section-pad" id="markets"><div class="wrap"><div class="head-row reveal"><div><span class="tag">UK coverage</span><h2>Structured around UK project procedures.</h2></div><p>Design and checking aligned with BS 5975, the Eurocodes and project-specific procedures.</p></div><div class="market-grid" style="grid-template-columns:1fr"><article class="market-card reveal"><img alt="UK temporary works" src="https://blog.schaltec.de/hs-fs/hubfs/2023-09-06-baustelle-reisch-sigmaringen-schaltec-gmbh-67.jpg?height=853&name=2023-09-06-baustelle-reisch-sigmaringen-schaltec-gmbh-67.jpg&width=1280"/><div class="market-content"><span class="market-label">UNITED KINGDOM</span><h3>UK temporary works</h3><p>Design and checking structured around BS 5975, Eurocodes and project procedures.</p><ul class="market-list"><li>BS 5975 control</li><li>CAT 1 / 2 / 3</li><li>Rail and infrastructure</li><li>Data centres</li><li>Building construction</li><li>TWC support</li></ul></div></article></div></div></section>
+<section class="section-pad" id="sectors" style="padding-top:0"><div class="wrap"><div class="head-row reveal"><div><span class="tag">Sectors</span><h2>Experience across demanding construction environments.</h2></div></div><div class="sector-grid reveal"><div class="sector">Data centres</div><div class="sector">Rail</div><div class="sector">Infrastructure</div><div class="sector">Commercial</div><div class="sector">Residential</div><div class="sector">Industrial</div><div class="sector">Energy</div><div class="sector">Water</div><div class="sector">Healthcare</div><div class="sector">Marine works</div></div></div></section>
+<section class="section-pad" id="projects" style="background:#0d1217"><div class="wrap"><div class="head-row reveal"><div><span class="tag">Selected experience</span><h2>Representative temporary works commissions.</h2></div></div><div class="projects-grid"><article class="project reveal"><img alt="Basement excavation support" src="https://images.squarespace-cdn.com/content/v1/681827a3a56a92682a55d476/1746413476612-6YK5EQWAQ6EFSUIY7MDQ/Bespoke%2BSolutions.jpg"/><div class="project-body"><span class="project-meta">EXCAVATION SUPPORT</span><h3>Basement support and underpinning</h3><p>Sequential excavation, party-wall constraints, propping and stage stability.</p><small>Calculations · sequence · drawings · hold points</small></div></article><article class="project reveal"><img alt="Formwork and propping" src="https://images.squarespace-cdn.com/content/v1/681827a3a56a92682a55d476/1746413476591-3H7RQ6JURMDLRG01C4I7/basement%2Bshoring%2C%2Bpropping%2C%2Bbracing%2C%2Bcapping%2Bbeam%2Bshoring.jpg"/><div class="project-body"><span class="project-meta">CONCRETE CONSTRUCTION</span><h3>Formwork and backpropping</h3><p>Pour loads, slab capacity, prop load paths and controlled striking.</p><small>Design check · load path · controlled release</small></div></article><article class="project reveal"><img alt="Steel and precast stability" src="https://images.squarespace-cdn.com/content/v1/681827a3a56a92682a55d476/1746413476603-TR8X0YBCJZRU039EY48J/Sheet%2BPiles%2C%2BBasement%2BExcavation%2C%2BHyraulic%2BBracing%2C%2BHydraulic%2BWalers%2C%2BShoring%2C%2BExcavation%2BSupport%2C%2BTemporary%2BWorks%2C%2BEquipment%2BHire.jpg"/><div class="project-body"><span class="project-meta">ERECTION ENGINEERING</span><h3>Steel and precast stability</h3><p>Temporary bracing, torsional stability, restraint and erection sequence.</p><small>Analysis · stability notes · erection controls</small></div></article></div></div></section>
+<section class="section-pad" id="process"><div class="wrap"><div class="head-row reveal"><div><span class="tag">Design control</span><h2>A clear route from brief to construction.</h2></div></div><div class="process-track reveal"><div class="proc-step"><div class="cat">01</div><h4>Define</h4><p>Brief, geometry, loads and interfaces.</p></div><div class="proc-step"><div class="cat">02</div><h4>Design</h4><p>Load path, analysis, calculations and drawings.</p></div><div class="proc-step"><div class="cat">03</div><h4>Check</h4><p>Agreed checking category and comment closure.</p></div><div class="proc-step"><div class="cat">04</div><h4>Control</h4><p>Hold points, inspections and residual risks.</p></div><div class="proc-step gate"><div class="cat">PTL</div><h4>Authorise</h4><p>Controlled issue under the project procedure.</p></div></div></div></section>
+<section class="section-pad" id="contact"><div class="wrap"><div class="quote-panel reveal"><div><span class="tag" style="color:#976126">Start a project</span><h2>Need a design or independent check?</h2><p>Send the scope, drawings, programme and location. SQRD2 will respond with the service scope, checking category, information requirements and fee.</p><div class="quote-actions"><a class="btn btn-dark" href="mailto:mail@sqrd2buildingdesignsolution.ltd?subject=Temporary%20Works%20Quotation%20Request">Request a quotation →</a><a class="btn btn-outline-dark" href="mailto:mail@sqrd2buildingdesignsolution.ltd">Email the engineer</a></div></div><div class="quote-steps"><div class="quote-step"><b>01</b><span>Provide the brief, drawings and required dates.</span></div><div class="quote-step"><b>02</b><span>Receive a scope, information schedule and fee.</span></div><div class="quote-step"><b>03</b><span>Proceed through design, check and controlled issue.</span></div></div></div></div></section></main><div class="wrap photo-note">Representative structure-focused construction photography is used, without individual portraits. Replace third-party images with licensed or approved SQRD2 project photography before commercial publication.<div class="image-policy">Engineering systems remain the visual focus</div></div><footer><div class="wrap foot-row"><div><div class="mono">SQRD2 ENGINEERING</div><span>Specialist Temporary Works Engineering Consultancy</span></div><div><span class="region-badge">UNITED KINGDOM · REMOTE</span><br/>mail@sqrd2buildingdesignsolution.ltd</div><div>© 2026 SQRD2 Engineering</div></div></footer><script>const els=document.querySelectorAll('.reveal');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});els.forEach(e=>io.observe(e));const h=document.querySelector('header');addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>20),{passive:true});const t=document.querySelector('.mobile-toggle'),m=document.getElementById('mobileMenu');if(t&&m){t.onclick=()=>{const o=m.classList.toggle('open');t.textContent=o?'CLOSE':'MENU'};m.querySelectorAll('a').forEach(a=>a.onclick=()=>m.classList.remove('open'))}</script><script>const hv=document.querySelector('.hero video');if(hv){hv.addEventListener('error',()=>hv.style.display='none');document.addEventListener('visibilitychange',()=>{if(document.hidden){hv.pause()}else{hv.play().catch(()=>{})}})}</script><script>document.querySelectorAll('img').forEach(img=>{img.addEventListener('error',()=>{img.classList.add('image-failed');img.removeAttribute('src');img.alt='Temporary works engineering image unavailable';});});</script></body>
+</html>
